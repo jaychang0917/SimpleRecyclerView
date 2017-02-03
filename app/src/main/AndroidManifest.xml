@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.jaychang.demo.srv"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".BasicUsageActivity" android:label="@string/basic_usage"/>
+        <activity android:name=".DividerActivity" android:label="@string/divider"/>
+        <activity android:name=".SpacingActivity" android:label="@string/spacing"/>
+        <activity android:name=".MultiTypesActivity" android:label="@string/multi_types"/>
+        <activity android:name=".EmptyStateViewActivity" android:label="@string/empty_state_view"/>
+        <activity android:name=".AutoLoadMoreActivity" android:label="@string/load_more"/>
+        <activity android:name=".DragAndDropActivity" android:label="@string/drag_and_drop" />
+        <activity android:name=".SwipeToDismissActivity" android:label="@string/swipe_to_dismiss" />
+        <activity android:name=".SnappyActivity" android:label="@string/snappy"/>
+        <activity android:name=".SectionHeaderActivity" android:label="@string/section_header"/>
+        <activity android:name=".CellOperationsActivity" android:label="@string/diff"/>
+    </application>
+
+</manifest>

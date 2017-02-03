@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_layout_modes" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/linearVerRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_showDivider="true"
+        app:srv_layoutMode="linearVertical" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/linearHorRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_showDivider="true"
+        app:srv_layoutMode="linearHorizontal" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/gridRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srv_showDivider="true"
+        app:srv_layoutMode="grid"
+        app:srv_gridSpanCount="3" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/gridSequenceRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srv_showDivider="true"
+        app:srv_layoutMode="grid"
+        app:srv_gridSpanSequence="2332" />
+
+</LinearLayout>

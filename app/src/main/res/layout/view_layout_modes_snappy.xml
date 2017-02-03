@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:padding="8dp"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/centerRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:checked="true"
+        android:text="@string/align_center"
+        android:textColor="@android:color/white"
+        />
+
+    <RadioButton
+        android:id="@+id/startRadioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="@string/align_start"
+        android:textColor="@android:color/white"
+        />
+
+</RadioGroup>

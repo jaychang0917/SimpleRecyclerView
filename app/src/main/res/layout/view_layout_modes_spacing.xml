@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <RadioButton
+        android:id="@+id/linearVerRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/linear_ver_include_edge"
+        android:textColor="@android:color/white"
+        />
+
+    <RadioButton
+        android:id="@+id/linearHorRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/linear_hor_not_include_edge"
+        android:textColor="@android:color/white"
+        />
+
+    <RadioButton
+        android:id="@+id/gridRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/grid_spacing_include_edge"
+        android:textColor="@android:color/white"
+        />
+
+    <RadioButton
+        android:id="@+id/gridSpacingOriRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/grid_spacing_orientation"
+        android:textColor="@android:color/white"
+        />
+
+    <RadioButton
+        android:id="@+id/gridSequenceRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/grid_sequence_spacing_not_include_edge"
+        android:textColor="@android:color/white"
+        />
+
+</RadioGroup>

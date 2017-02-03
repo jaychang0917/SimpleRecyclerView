@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_layout_modes_spacing" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/linearVerRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_layoutMode="linearVertical"
+        app:srv_spacing="4dp"
+        app:srv_isSpacingIncludeEdge="true" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/linearHorRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_layoutMode="linearHorizontal"
+        app:srv_spacing="4dp" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/gridRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_layoutMode="grid"
+        app:srv_gridSpanCount="3"
+        app:srv_spacing="4dp"
+        app:srv_isSpacingIncludeEdge="true" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/gridSpacingOriRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_layoutMode="grid"
+        app:srv_gridSpanCount="3"
+        app:srv_verticalSpacing="8dp"
+        app:srv_horizontalSpacing="4dp" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/gridSequenceRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_layoutMode="grid"
+        app:srv_gridSpanSequence="31132"
+        app:srv_spacing="4dp" />
+
+</LinearLayout>

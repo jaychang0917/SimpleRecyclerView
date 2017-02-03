@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/view_layout_modes_linear" />
+
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="match_parent"
+        android:paddingBottom="8dp"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/linearVerRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srv_showDivider="true"
+        app:srv_layoutMode="linearVertical" />
+
+    <com.jaychang.srv.SimpleRecyclerView
+        android:id="@+id/linearHorRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srv_showDivider="true"
+        app:srv_layoutMode="linearHorizontal" />
+
+</LinearLayout>

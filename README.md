@@ -1,4 +1,6 @@
 # SimpleRecyclerView
+[![Release](https://jitpack.io/v/jaychang0917/SimpleRecyclerView.svg)](https://jitpack.io/#jaychang0917/SimpleRecyclerView)
+
 A RecyclerView extension for building list more easily.
 
 <img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/basic_usage.gif" width="160" height="280">
@@ -30,7 +32,7 @@ A RecyclerView extension for building list more easily.
  - [Cell Operations](#cell_ops_list)
 
 ##Sample Project
-[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/app/SimpleRecyclerView_1_0_0.apk)
+[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_0_0.apk)
 
 ##Installation
 In your project level build.gradle :

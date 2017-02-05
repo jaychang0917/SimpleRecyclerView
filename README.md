@@ -1,5 +1,6 @@
 # SimpleRecyclerView
 [![Release](https://jitpack.io/v/jaychang0917/SimpleRecyclerView.svg)](https://jitpack.io/#jaychang0917/SimpleRecyclerView)
+[![Release](http://img.shields.io/badge/Android%20Weekly-%23243-2CB3E5.svg?style=flat)](http://androidweekly.net/issues/issue-243)
 
 A RecyclerView extension for building list more easily.
 

@@ -33,7 +33,7 @@ A RecyclerView extension for building list more easily.
  - [Cell Operations](#cell_ops_list)
 
 ##Sample Project
-[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_0_0.apk)
+[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_0_2.apk)
 
 ##Installation
 In your project level build.gradle :
@@ -51,7 +51,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.1'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.2'
 }
 ```
 

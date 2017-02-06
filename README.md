@@ -51,7 +51,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.0'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.1'
 }
 ```
 

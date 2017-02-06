@@ -56,18 +56,18 @@ public class SwipeToDismissActivity extends BaseActivity {
       // Optional
       @Override
       public void onCellSwiping(SimpleRecyclerView simpleRecyclerView, View itemView, Book item, int position, Canvas canvas, float dX, float dY, boolean isControlledByUser) {
-        resultView.setText("Item " + item + " is swiping.");
+        resultView.setText("Item " + item + " at position " + position + " is swiping.");
       }
 
       // Optional
       @Override
       public void onCellSettled(SimpleRecyclerView simpleRecyclerView, View itemView, Book item, int position) {
-        resultView.setText("Item " + item + " is settled.");
+        resultView.setText("Item " + item  + " at position " + position + " is settled.");
       }
 
       @Override
       public void onCellDismissed(SimpleRecyclerView simpleRecyclerView, Book item, int position) {
-        resultView.setText("Item: " + item + " is dismissed.");
+        resultView.setText("Item: " + item  + " at position " + position + " is dismissed.");
       }
     };
 
@@ -82,18 +82,18 @@ public class SwipeToDismissActivity extends BaseActivity {
       // Optional
       @Override
       public void onCellSwiping(SimpleRecyclerView simpleRecyclerView, View itemView, Integer item, int position, Canvas canvas, float dX, float dY, boolean isControlledByUser) {
-        resultView.setText("Item " + item + " is swiping.");
+        resultView.setText("Item " + item + " at position " + position + " is swiping.");
       }
 
       // Optional
       @Override
       public void onCellSettled(SimpleRecyclerView simpleRecyclerView, View itemView, Integer item, int position) {
-        resultView.setText("Item " + item + " is settled.");
+        resultView.setText("Item " + item  + " at position " + position + " is settled.");
       }
 
       @Override
       public void onCellDismissed(SimpleRecyclerView simpleRecyclerView, Integer item, int position) {
-        resultView.setText("Item: " + item + " is dismissed.");
+        resultView.setText("Item: " + item  + " at position " + position + " is dismissed.");
       }
     };
 

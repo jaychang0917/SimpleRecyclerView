@@ -49,23 +49,23 @@ public class DragAndDropActivity extends BaseActivity {
       // Optional
       @Override
       public void onCellDragStarted(SimpleRecyclerView simpleRecyclerView, View itemView, Book item, int position) {
-        resultView.setText("Started dragging " + item);
+        resultView.setText("Started dragging " + item + " at position " + position);
       }
 
       // Optional
       @Override
       public void onCellMoved(SimpleRecyclerView simpleRecyclerView, View itemView, Book item, int fromPosition, int toPosition) {
-        resultView.setText("Moved " + item + " from " + fromPosition + " to " + toPosition);
+        resultView.setText("Moved " + item + " from position " + fromPosition + " to position " + toPosition);
       }
 
       @Override
       public void onCellDropped(SimpleRecyclerView simpleRecyclerView, View itemView, Book item, int fromPosition, int toPosition) {
-        resultView.setText("Dragged " + item + " from " + fromPosition + " to " + toPosition);
+        resultView.setText("Dragged " + item + " from position " + fromPosition + " to position " + toPosition);
       }
 
       @Override
       public void onCellDragCancelled(SimpleRecyclerView simpleRecyclerView, View itemView, Book item, int currentPosition) {
-        resultView.setText("Cancelled dragging " + item);
+        resultView.setText("Cancelled dragging " + item + " at position " + currentPosition);
       }
     };
 

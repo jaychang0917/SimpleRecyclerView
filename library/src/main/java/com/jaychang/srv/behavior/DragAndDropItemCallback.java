@@ -13,6 +13,7 @@ import com.jaychang.srv.R;
 import com.jaychang.srv.SimpleRecyclerView;
 
 import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
+import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
 @SuppressWarnings("unchecked")
 class DragAndDropItemCallback extends ItemTouchHelper.Callback {
@@ -23,6 +24,7 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
   private int fromPosition = -1;
   private int toPosition;
   private Object draggingItem;
+  private int draggingItemPosition;
   private DragAndDropCallback dragAndDropCallback;
 
   DragAndDropItemCallback(OnItemMoveListener callback,
@@ -49,7 +51,10 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
     }
 
     // obtain current dragging item
-    draggingItem = simpleRecyclerView.getCell(viewHolder.getAdapterPosition()).getItem();
+    draggingItemPosition = viewHolder.getAdapterPosition();
+    if (draggingItemPosition != NO_POSITION) {
+      draggingItem = simpleRecyclerView.getCell(draggingItemPosition).getItem();
+    }
 
     // setup flags
     RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
@@ -105,7 +110,7 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
     }
 
     if (dragAndDropCallback != null) {
-      dragAndDropCallback.onCellDragStarted(simpleRecyclerView, viewHolder.itemView, draggingItem, viewHolder.getAdapterPosition());
+      dragAndDropCallback.onCellDragStarted(simpleRecyclerView, viewHolder.itemView, draggingItem, draggingItemPosition);
     }
 
     if (options.isDefaultEffectEnabled()) {
@@ -126,7 +131,7 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
 
     if (dragAndDropCallback != null) {
       if (fromPosition == -1) {
-        dragAndDropCallback.onCellDragCancelled((SimpleRecyclerView) recyclerView, viewHolder.itemView, draggingItem, viewHolder.getAdapterPosition());
+        dragAndDropCallback.onCellDragCancelled((SimpleRecyclerView) recyclerView, viewHolder.itemView, draggingItem, draggingItemPosition);
       } else {
         dragAndDropCallback.onCellDropped((SimpleRecyclerView) recyclerView, viewHolder.itemView, draggingItem, fromPosition, toPosition);
       }

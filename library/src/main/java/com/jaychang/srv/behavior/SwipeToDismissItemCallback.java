@@ -6,6 +6,8 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.jaychang.srv.SimpleRecyclerView;
 
+import static android.support.v7.widget.RecyclerView.NO_POSITION;
+
 @SuppressWarnings("unchecked")
 class SwipeToDismissItemCallback extends ItemTouchHelper.Callback {
 
@@ -13,6 +15,7 @@ class SwipeToDismissItemCallback extends ItemTouchHelper.Callback {
   private SwipeToDismissOptions options;
   private SimpleRecyclerView simpleRecyclerView;
   private Object swipeItem;
+  private int swipeItemPosition;
   private boolean isItemSettled;
   private boolean isItemSwiped;
 
@@ -34,7 +37,10 @@ class SwipeToDismissItemCallback extends ItemTouchHelper.Callback {
     }
 
     // obtain current item
-    swipeItem = simpleRecyclerView.getCell(viewHolder.getAdapterPosition()).getItem();
+    swipeItemPosition = viewHolder.getAdapterPosition();
+    if (swipeItemPosition != NO_POSITION) {
+      swipeItem = simpleRecyclerView.getCell(swipeItemPosition).getItem();
+    }
 
     // reset
     isItemSettled = false;
@@ -76,7 +82,7 @@ class SwipeToDismissItemCallback extends ItemTouchHelper.Callback {
 
     if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
       if (options.getSwipeToDismissCallback() != null && !isItemSettled) {
-        options.getSwipeToDismissCallback().onCellSwiping(simpleRecyclerView, viewHolder.itemView, swipeItem, viewHolder.getAdapterPosition(), canvas, dX, dY, isControlledByUser);
+        options.getSwipeToDismissCallback().onCellSwiping(simpleRecyclerView, viewHolder.itemView, swipeItem, swipeItemPosition, canvas, dX, dY, isControlledByUser);
       }
 
       if (options.isDefaultFadeOutEffectEnabled()) {
@@ -106,13 +112,11 @@ class SwipeToDismissItemCallback extends ItemTouchHelper.Callback {
 
     isItemSettled = true;
 
-    int position = viewHolder.getAdapterPosition();
-
     if (options.getSwipeToDismissCallback() != null) {
       if (isItemSwiped) {
-        options.getSwipeToDismissCallback().onCellDismissed(simpleRecyclerView, swipeItem, position);
+        options.getSwipeToDismissCallback().onCellDismissed(simpleRecyclerView, swipeItem, swipeItemPosition);
       } else {
-        options.getSwipeToDismissCallback().onCellSettled(simpleRecyclerView, viewHolder.itemView, swipeItem, position);
+        options.getSwipeToDismissCallback().onCellSettled(simpleRecyclerView, viewHolder.itemView, swipeItem, swipeItemPosition);
       }
     }
 

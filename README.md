@@ -105,6 +105,14 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
   protected void onBindViewHolder(ViewHolder holder, int position, Context context, List<Object> payloads) {
     holder.textView.setText(getItem().getTitle());
   }
+  
+  /**
+   * Optional
+   * */
+  @Override
+  protected void onUnbindViewHolder(ViewHolder holder) {
+    // do your cleaning jobs here when the item view is recycled.
+  }
 
   /**
    * The unique identifier of your data model.
@@ -186,7 +194,7 @@ simpleRecyclerView.addCells(cells);
 SimpleRecyclerView provides basic CRUD cell operations. 
 >[Full cell operations list](#cell_ops_list)
 
-It is common that loading cache data first and then fetch new data from network to update the list. The library provides `addOrUpdateCell()` and `addOrUpdateCells()` operation to achieve that. The cells will not be updated (i.e. receive `onBindViewHolder()` callback) if their bounded data models are the same, otherwsie they will be added to the end of list. 
+It is common that loading cache data first and then fetch new data from network to update the list. The library provides `addOrUpdateCell()` and `addOrUpdateCells()` operation to achieve that (It uses [DiffUtils][1] under the hood). The cells will not be updated (i.e. receive `onBindViewHolder()` callback) if their bounded data models are the same, otherwsie they will be added to the end of list. 
 To enable this feature, the cells must be implemented `Updatable` interface.
 ```java
 public interface Updatable<T> {
@@ -286,7 +294,7 @@ The empty state view will be shown automatically when there is no data.
 ```
 
 ##<a name=section_header>Section Header</a>
-You can group cells together by providing a `SectionHeaderProvider<T>` to `setSectionHeader(provider)`. A shorthand method `SectionHeaderProviderAdapter<T>` is also provided. 
+You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SectionHeaderProviderAdapter<T>`][3] is also provided. 
 ```java
 SectionHeaderProvider<Book> sectionHeaderProvider = new SectionHeaderProviderAdapter<Book>() {
   // Your section header view here
@@ -338,7 +346,7 @@ simpleRecyclerView.setLoadMoreToTop(true);
 ```
 
 ##<a name=drag_drop>Drag & Drop</a>
-You can enable drag and drop by providing a `DragAndDropCallback<T>` to `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
+You can enable drag and drop by providing a [`DragAndDropCallback<T>`][4] to `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
 ```java
 DragAndDropCallback<Book> dragAndDropCallback = new DragAndDropCallback<Book>() {
   // Optional, return false if you manipulate custom drag effect in the rest of callbacks.
@@ -379,7 +387,7 @@ simpleRecyclerView.enableDragAndDrop(dragAndDropCallback);
 ```
 
 ##<a name=swipe_dismiss>Swipe To Dismiss</a>
-You can enable swipe to dismiss by providing a `SwipeToDismissCallback<T>` to `enableSwipeToDismiss(callback, swipeDirections)`. All callback methods of `SwipeToDismissCallback<T>` are optional.
+You can enable swipe to dismiss by providing a [`SwipeToDismissCallback<T>`][5] to `enableSwipeToDismiss(callback, swipeDirections)`. All callback methods of `SwipeToDismissCallback<T>` are optional.
 ```java
 SwipeToDismissCallback<Book> swipeToDismissCallback = new SwipeToDismissCallback<Book>() {
   // Optional, return false if you manipulate custom swipe effect in the rest of callbacks.
@@ -475,6 +483,11 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 | getCells(int fromPosition, int toPosition) | Get a range of cells `[fromPosition..toPosition]` |
 | getAllCells() | Get all cells |
 
+[1]: https://goo.gl/AB43P4
+[2]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SectionHeaderProvider.java
+[3]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SectionHeaderProviderAdapter.java
+[4]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/DragAndDropCallback.java
+[5]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/SwipeToDismissCallback.java
 
 
 ##License

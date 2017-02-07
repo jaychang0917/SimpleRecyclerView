@@ -340,7 +340,7 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
   }
 });
 ```
-If you are going to build a list like chatting, i.e. the cells add to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
+If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
 ```java
 simpleRecyclerView.setLoadMoreToTop(true);
 ```

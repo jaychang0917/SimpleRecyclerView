@@ -32,6 +32,11 @@ A RecyclerView extension for building list more easily.
  - [Attributes](#attr)
  - [Cell Operations](#cell_ops_list)
 
+##Sample Project
+<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code__1_0_3.png" width="100" height="100">
+
+[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView__1_0_3.apk)
+
 ##Installation
 In your project level build.gradle :
 

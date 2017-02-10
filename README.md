@@ -53,7 +53,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.5'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.6'
 }
 ```
 
@@ -149,16 +149,16 @@ List<BookCell> cells = new ArrayList<>();
 
 for (Book book : books) {
   BookCell cell = new BookCell(book);
-  // There are two default cell listeners: OnCellClickListener<T> and OnCellLongClickListener<T>
-  cell.setOnCellClickListener(new SimpleCell.OnCellClickListener<Book>() {
+  // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
+  cell.setOnCellClickListener2(new SimpleCell.OnCellClickListener2<BookCell, BookCell.ViewHolder, Book>() {
     @Override
-    public void onCellClicked(Book item) {
+    public void onCellClicked(BookCell bookCell, BookCell.ViewHolder viewHolder, Book item) {
       ...
     }
   });
-  cell.setOnCellLongClickListener(new SimpleCell.OnCellLongClickListener<Book>() {
+  cell.setOnCellLongClickListener2(new SimpleCell.OnCellLongClickListener2<BookCell, BookCell.ViewHolder, Book>() {
     @Override
-    public void onCellLongClicked(Book item) {
+    public void onCellLongClicked(BookCell bookCell, BookCell.ViewHolder viewHolder, Book item) {
       ...
     }
   });

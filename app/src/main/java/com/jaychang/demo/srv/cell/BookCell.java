@@ -103,7 +103,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
     return bundle;
   }
 
-  static class ViewHolder extends SimpleViewHolder {
+  public static class ViewHolder extends SimpleViewHolder {
     @BindView(R.id.textView)
     TextView textView;
     @BindView(R.id.dragHandle)

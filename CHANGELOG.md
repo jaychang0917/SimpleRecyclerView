@@ -1,5 +1,8 @@
 ##Change Log
 
+###Version 1.0.6 (2017-02-10)
+- Update default cell listeners
+
 ###Version 1.0.5 (2017-02-10)
 - Update `minSdkVersion` to 14
 

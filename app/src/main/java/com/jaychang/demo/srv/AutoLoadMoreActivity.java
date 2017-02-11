@@ -23,7 +23,7 @@ import butterknife.OnCheckedChanged;
 
 public class AutoLoadMoreActivity extends BaseActivity {
 
-  @BindView(R.id.gridRecyclerView)
+  @BindView(R.id.recyclerView)
   SimpleRecyclerView recyclerView;
   @BindView(R.id.loadMoreToTopCheckbox)
   CheckBox loadMoreToTopCheckbox;

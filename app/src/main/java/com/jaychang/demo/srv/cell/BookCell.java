@@ -74,6 +74,12 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
     }
   }
 
+  // Optional
+  @Override
+  protected void onUnbindViewHolder(ViewHolder holder) {
+    // do your cleaning jobs here when the item view is recycled.
+  }
+
   @Override
   protected long getItemId() {
     return getItem().getId();

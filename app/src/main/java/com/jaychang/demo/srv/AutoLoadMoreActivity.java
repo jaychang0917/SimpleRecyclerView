@@ -80,12 +80,13 @@ public class AutoLoadMoreActivity extends BaseActivity {
   }
 
   private void loadBooks() {
+    recyclerView.setLoadingMore(true);
     DataUtils.getBooksAsync(this, new DataUtils.DataCallback() {
       @Override
       public void onSuccess(List<Book> books) {
         bindBooks(books);
         ToastUtils.show(AutoLoadMoreActivity.this.getApplicationContext(), "Load more " + books.size() + " books.");
-        recyclerView.setLoadMoreCompleted();
+        recyclerView.setLoadingMore(false);
       }
     });
   }

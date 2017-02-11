@@ -60,6 +60,7 @@
         android:padding="4dp"
         android:scrollbars="vertical"
         app:srv_layoutMode="linearVertical"
+        app:srv_loadMoreView="@layout/view_load_more"
         app:srv_spacing="4dp" />
 
 </LinearLayout>

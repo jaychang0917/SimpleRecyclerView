@@ -66,6 +66,7 @@ public class SimpleRecyclerView extends RecyclerView
   private boolean isSnappyEnabled;
   private int snapAlignment;
   private int emptyStateViewRes;
+  private int loadMoreViewRes;
 
   private SimpleAdapter adapter;
   private LayoutManager layoutManager;
@@ -92,6 +93,7 @@ public class SimpleRecyclerView extends RecyclerView
   private boolean isEmptyViewShown;
   private boolean isRefreshing;
 
+  private InternalLoadMoreViewCell loadMoreViewCell;
   private boolean isScrollUp;
   private int autoLoadMoreThreshold;
   private OnLoadMoreListener onLoadMoreListener;
@@ -136,6 +138,7 @@ public class SimpleRecyclerView extends RecyclerView
     isSnappyEnabled = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_snappy, false);
     snapAlignment = typedArray.getInt(R.styleable.srv_SimpleRecyclerView_srv_snap_alignment, 0);
     emptyStateViewRes = typedArray.getResourceId(R.styleable.srv_SimpleRecyclerView_srv_emptyStateView, 0);
+    loadMoreViewRes = typedArray.getResourceId(R.styleable.srv_SimpleRecyclerView_srv_loadMoreView, 0);
     typedArray.recycle();
   }
 
@@ -187,6 +190,10 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void setupLoadMore() {
+    if (loadMoreViewRes != 0) {
+      setLoadMoreView(loadMoreViewRes);
+    }
+
     addOnScrollListener(new OnScrollListener() {
       @Override
       public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -553,6 +560,60 @@ public class SimpleRecyclerView extends RecyclerView
   /**
    * load more
    */
+  public void setLoadMoreView(@LayoutRes int loadMoreView) {
+    View view = LayoutInflater.from(getContext()).inflate(loadMoreView, this, false);
+    setLoadMoreView(view);
+  }
+
+  public void setLoadMoreView(View loadMoreView) {
+    this.loadMoreViewCell = new InternalLoadMoreViewCell(loadMoreView);
+    loadMoreViewCell.setSpanSize(gridSpanCount);
+  }
+
+  public void setLoadingMore(boolean isLoadingMore) {
+    if (isLoadingMore) {
+      showLoadMoreView();
+    } else {
+      hideLoadMoreView();
+    }
+  }
+
+  private void showLoadMoreView() {
+    if (loadMoreViewCell == null) {
+      isLoadingMore = true;
+      return;
+    }
+
+    if (isLoadMoreToTop) {
+      post(new Runnable() {
+        @Override
+        public void run() {
+          addCell(0, loadMoreViewCell);
+        }
+      });
+    } else {
+      post(new Runnable() {
+        @Override
+        public void run() {
+          addCell(loadMoreViewCell);
+        }
+      });
+    }
+
+    isLoadingMore = true;
+  }
+
+  private void hideLoadMoreView() {
+    if (loadMoreViewCell == null) {
+      isLoadingMore = false;
+      return;
+    }
+
+    removeCell(loadMoreViewCell);
+
+    isLoadingMore = false;
+  }
+
   public void setAutoLoadMoreThreshold(int hiddenCellCount) {
     if (hiddenCellCount < 0) {
       throw new IllegalArgumentException("hiddenCellCount must >= 0");
@@ -576,7 +637,7 @@ public class SimpleRecyclerView extends RecyclerView
     this.onLoadMoreListener = listener;
   }
 
-  // Need to call this method to tell SimpleRecyclerView to resume checking threshold,
+  @Deprecated
   public void setLoadMoreCompleted() {
     this.isLoadingMore = false;
   }

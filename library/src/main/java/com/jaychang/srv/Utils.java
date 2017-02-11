@@ -1,6 +1,7 @@
 package com.jaychang.srv;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,11 @@ public final class Utils {
   public static int dpToPx(Context context, int dp) {
     float density = context.getApplicationContext().getResources().getDisplayMetrics().density;
     return (int) (dp * density);
+  }
+
+  public static boolean isScrollable(RecyclerView recyclerView) {
+    return recyclerView.computeHorizontalScrollRange() > recyclerView.getWidth() ||
+      recyclerView.computeVerticalScrollRange() > recyclerView.getHeight();
   }
 
 }

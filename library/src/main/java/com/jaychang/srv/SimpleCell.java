@@ -8,18 +8,30 @@ import android.view.ViewGroup;
 
 public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
 
+  @Deprecated
   public interface OnCellClickListener<T> {
     void onCellClicked(T item);
   }
 
+  @Deprecated
   public interface OnCellLongClickListener<T> {
     void onCellLongClicked(T item);
+  }
+
+  public interface OnCellClickListener2<CELL, VH, T> {
+    void onCellClicked(CELL cell, VH viewHolder, T item);
+  }
+
+  public interface OnCellLongClickListener2<CELL, VH, T> {
+    void onCellLongClicked(CELL cell, VH viewHolder, T item);
   }
 
   private int spanSize = 1;
   private T item;
   private OnCellClickListener onCellClickListener;
+  private OnCellClickListener2 onCellClickListener2;
   private OnCellLongClickListener onCellLongClickListener;
+  private OnCellLongClickListener2 onCellLongClickListener2;
 
   public SimpleCell(T item) {
     this.item = item;
@@ -52,20 +64,40 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
     this.spanSize = spanSize;
   }
 
+  @Deprecated
   public void setOnCellClickListener(OnCellClickListener onCellClickListener) {
     this.onCellClickListener = onCellClickListener;
   }
 
+  @Deprecated
   public void setOnCellLongClickListener(OnCellLongClickListener onCellLongClickListener) {
     this.onCellLongClickListener = onCellLongClickListener;
   }
 
+  @Deprecated
   public OnCellClickListener getOnCellClickListener() {
     return onCellClickListener;
   }
 
+  @Deprecated
   public OnCellLongClickListener getOnCellLongClickListener() {
     return onCellLongClickListener;
+  }
+
+  public void setOnCellClickListener2(OnCellClickListener2 onCellClickListener2) {
+    this.onCellClickListener2 = onCellClickListener2;
+  }
+
+  public void setOnCellLongClickListener2(OnCellLongClickListener2 onCellLongClickListener2) {
+    this.onCellLongClickListener2 = onCellLongClickListener2;
+  }
+
+  public OnCellClickListener2 getOnCellClickListener2() {
+    return onCellClickListener2;
+  }
+
+  public OnCellLongClickListener2 getOnCellLongClickListener2() {
+    return onCellLongClickListener2;
   }
 
   @Override

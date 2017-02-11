@@ -203,19 +203,19 @@ public class SimpleRecyclerView extends RecyclerView
           return;
         }
 
-        isScrollUp = dy < 0 || dy == 0;
+        isScrollUp = dy < 0;
 
         checkLoadMoreThreshold();
       }
     });
 
-    // trigger initial checkLoadMoreThreshold() if isLoadMoreToTop is true.
+    // trigger checkLoadMoreThreshold() if the recyclerview if not scrollable.
     setOnTouchListener(new OnTouchListener() {
       float preY;
 
       @Override
       public boolean onTouch(View v, MotionEvent event) {
-        if (onLoadMoreListener == null || !isLoadMoreToTop) {
+        if (onLoadMoreListener == null) {
           return false;
         }
 
@@ -223,10 +223,11 @@ public class SimpleRecyclerView extends RecyclerView
           case MotionEvent.ACTION_MOVE:
             isScrollUp = event.getY() > preY;
             preY = event.getY();
-            if (isScrollUp) {
-              checkLoadMoreThreshold();
-              setOnTouchListener(null);
-            }
+            checkLoadMoreThreshold();
+        }
+
+        if (Utils.isScrollable(SimpleRecyclerView.this)) {
+          setOnTouchListener(null);
         }
 
         return false;
@@ -309,7 +310,7 @@ public class SimpleRecyclerView extends RecyclerView
 
     if (spacing != 0) {
       setSpacingInternal(spacing, spacing, isSpacingIncludeEdge);
-    } else if (verticalSpacing != 0 || horizontalSpacing != 0){
+    } else if (verticalSpacing != 0 || horizontalSpacing != 0) {
       setSpacingInternal(verticalSpacing, horizontalSpacing, isSpacingIncludeEdge);
     }
   }

@@ -26,6 +26,7 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
   private Object draggingItem;
   private int draggingItemPosition;
   private DragAndDropCallback dragAndDropCallback;
+  private StateListAnimator animator;
 
   DragAndDropItemCallback(OnItemMoveListener callback,
                           DragAndDropOptions options) {
@@ -116,8 +117,8 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
     if (options.isDefaultEffectEnabled()) {
       viewHolder.itemView.setSelected(true);
       viewHolder.itemView.setAlpha(0.95f);
-      if (Build.VERSION.SDK_INT >= 21) {
-        StateListAnimator animator = AnimatorInflater.loadStateListAnimator(viewHolder.itemView.getContext(), R.animator.srv_raise);
+      if (Build.VERSION.SDK_INT >= 21 && animator == null) {
+        animator = AnimatorInflater.loadStateListAnimator(viewHolder.itemView.getContext(), R.animator.srv_raise);
         viewHolder.itemView.setStateListAnimator(animator);
       }
     }

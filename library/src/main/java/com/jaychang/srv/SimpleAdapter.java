@@ -59,7 +59,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   }
 
   @Override
-  public void onBindViewHolder(SimpleViewHolder holder, int position, List<Object> payloads) {
+  public void onBindViewHolder(final SimpleViewHolder holder, int position, List<Object> payloads) {
     final SimpleCell cell = cells.get(position);
 
     holder.bind(cell);
@@ -78,6 +78,25 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
         @Override
         public boolean onLongClick(View v) {
           cell.getOnCellLongClickListener().onCellLongClicked(cell.getItem());
+          return true;
+        }
+      });
+    }
+
+    if (cell.getOnCellClickListener2() != null) {
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          cell.getOnCellClickListener2().onCellClicked(cell, holder, cell.getItem());
+        }
+      });
+    }
+
+    if (cell.getOnCellLongClickListener2() != null) {
+      holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+          cell.getOnCellLongClickListener2().onCellLongClicked(cell, holder, cell.getItem());
           return true;
         }
       });

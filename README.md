@@ -1,6 +1,6 @@
 # SimpleRecyclerView
 [![Release](https://jitpack.io/v/jaychang0917/SimpleRecyclerView.svg)](https://jitpack.io/#jaychang0917/SimpleRecyclerView)
-[![Release](http://img.shields.io/badge/Android%20Weekly-%23243-2CB3E5.svg?style=flat)](http://androidweekly.net/issues/issue-243)
+[![Android Weekly](http://img.shields.io/badge/Android%20Weekly-%23243-2CB3E5.svg)](http://androidweekly.net/issues/issue-243)
 
 A RecyclerView extension for building list more easily.
 
@@ -33,7 +33,9 @@ A RecyclerView extension for building list more easily.
  - [Cell Operations](#cell_ops_list)
 
 ##Sample Project
-[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_0_0.apk)
+<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code_1_0__4.png" width="100" height="100">
+
+[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView__1_0_4.apk)
 
 ##Installation
 In your project level build.gradle :
@@ -51,7 +53,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.1'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.6'
 }
 ```
 
@@ -105,6 +107,14 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
   protected void onBindViewHolder(ViewHolder holder, int position, Context context, List<Object> payloads) {
     holder.textView.setText(getItem().getTitle());
   }
+  
+  /**
+   * Optional
+   * */
+  @Override
+  protected void onUnbindViewHolder(ViewHolder holder) {
+    // do your cleaning jobs here when the item view is recycled.
+  }
 
   /**
    * The unique identifier of your data model.
@@ -139,16 +149,16 @@ List<BookCell> cells = new ArrayList<>();
 
 for (Book book : books) {
   BookCell cell = new BookCell(book);
-  // There are two default cell listeners: OnCellClickListener<T> and OnCellLongClickListener<T>
-  cell.setOnCellClickListener(new SimpleCell.OnCellClickListener<Book>() {
+  // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
+  cell.setOnCellClickListener2(new SimpleCell.OnCellClickListener2<BookCell, BookCell.ViewHolder, Book>() {
     @Override
-    public void onCellClicked(Book item) {
+    public void onCellClicked(BookCell bookCell, BookCell.ViewHolder viewHolder, Book item) {
       ...
     }
   });
-  cell.setOnCellLongClickListener(new SimpleCell.OnCellLongClickListener<Book>() {
+  cell.setOnCellLongClickListener2(new SimpleCell.OnCellLongClickListener2<BookCell, BookCell.ViewHolder, Book>() {
     @Override
-    public void onCellLongClicked(Book item) {
+    public void onCellLongClicked(BookCell bookCell, BookCell.ViewHolder viewHolder, Book item) {
       ...
     }
   });
@@ -186,7 +196,7 @@ simpleRecyclerView.addCells(cells);
 SimpleRecyclerView provides basic CRUD cell operations. 
 >[Full cell operations list](#cell_ops_list)
 
-It is common that loading cache data first and then fetch new data from network to update the list. The library provides `addOrUpdateCell()` and `addOrUpdateCells()` operation to achieve that. The cells will not be updated (i.e. receive `onBindViewHolder()` callback) if their bounded data models are the same, otherwsie they will be added to the end of list. 
+It is common that loading cache data first and then fetch new data from network to update the list. The library provides `addOrUpdateCell()` and `addOrUpdateCells()` operation to achieve that (It uses [DiffUtils][1] under the hood). The cells will not be updated (i.e. receive `onBindViewHolder()` callback) if their bounded data models are the same, otherwsie they will be added to the end of list. 
 To enable this feature, the cells must be implemented `Updatable` interface.
 ```java
 public interface Updatable<T> {
@@ -286,7 +296,7 @@ The empty state view will be shown automatically when there is no data.
 ```
 
 ##<a name=section_header>Section Header</a>
-You can group cells together by providing a `SectionHeaderProvider<T>` to `setSectionHeader(provider)`. A shorthand method `SectionHeaderProviderAdapter<T>` is also provided. 
+You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SectionHeaderProviderAdapter<T>`][3] is also provided. 
 ```java
 SectionHeaderProvider<Book> sectionHeaderProvider = new SectionHeaderProviderAdapter<Book>() {
   // Your section header view here
@@ -332,13 +342,13 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
   }
 });
 ```
-If you are going to build a list like chatting, i.e. the cells add to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
+If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
 ```java
 simpleRecyclerView.setLoadMoreToTop(true);
 ```
 
 ##<a name=drag_drop>Drag & Drop</a>
-You can enable drag and drop by providing a `DragAndDropCallback<T>` to `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
+You can enable drag and drop by providing a [`DragAndDropCallback<T>`][4] to `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
 ```java
 DragAndDropCallback<Book> dragAndDropCallback = new DragAndDropCallback<Book>() {
   // Optional, return false if you manipulate custom drag effect in the rest of callbacks.
@@ -379,7 +389,7 @@ simpleRecyclerView.enableDragAndDrop(dragAndDropCallback);
 ```
 
 ##<a name=swipe_dismiss>Swipe To Dismiss</a>
-You can enable swipe to dismiss by providing a `SwipeToDismissCallback<T>` to `enableSwipeToDismiss(callback, swipeDirections)`. All callback methods of `SwipeToDismissCallback<T>` are optional.
+You can enable swipe to dismiss by providing a [`SwipeToDismissCallback<T>`][5] to `enableSwipeToDismiss(callback, swipeDirections)`. All callback methods of `SwipeToDismissCallback<T>` are optional.
 ```java
 SwipeToDismissCallback<Book> swipeToDismissCallback = new SwipeToDismissCallback<Book>() {
   // Optional, return false if you manipulate custom swipe effect in the rest of callbacks.
@@ -475,6 +485,11 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 | getCells(int fromPosition, int toPosition) | Get a range of cells `[fromPosition..toPosition]` |
 | getAllCells() | Get all cells |
 
+[1]: https://goo.gl/AB43P4
+[2]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SectionHeaderProvider.java
+[3]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SectionHeaderProviderAdapter.java
+[4]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/DragAndDropCallback.java
+[5]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/SwipeToDismissCallback.java
 
 
 ##License

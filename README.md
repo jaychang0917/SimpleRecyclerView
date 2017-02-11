@@ -24,7 +24,10 @@ A RecyclerView extension for building list more easily.
 - [Spacing](#spacing)
 - [Empty State View](#empty_view) 
 - [Section Header](#section_header) 
-- [Auto Load More](#auto_load_more) 
+- [Auto Load More](#auto_load_more)
+ - [Load more threshold](#load_more_threshold)
+ - [Load more view](#load_more_view)
+ - [Load more to top](#load_more_top)
 - [Drag & Drop](#drag_drop)
 - [Swipe To Dismiss](#swipe_dismiss)
 - [Snappy](#snappy)
@@ -331,7 +334,7 @@ simpleRecyclerView.setSectionHeader(sectionHeaderProvider);
 ```
 
 ##<a name=auto_load_more>Auto Load More</a>
-####Basic
+####<a name=load_more_threshold>Load more threshold</a>
 ```java
 // if the total beneath hidden cells count <= 4, onLoadMore() will be called. Default threshold is 0.
 simpleRecyclerView.setAutoLoadMoreThreshold(4);
@@ -343,12 +346,7 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
   }
 });
 ```
-####Load more to top
-If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
-```java
-simpleRecyclerView.setLoadMoreToTop(true);
-```
-####Custom load more view
+####<a name=load_more_view>Load more view</a>
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
     android:id="@+id/recyclerView"
@@ -356,6 +354,11 @@ simpleRecyclerView.setLoadMoreToTop(true);
     android:layout_height="match_parent"
     app:srv_layoutMode="linearVertical"
     app:srv_loadMoreView="@layout/view_load_more" />
+```
+####<a name=load_more_top>Load more to top</a>
+If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
+```java
+simpleRecyclerView.setLoadMoreToTop(true);
 ```
 
 ##<a name=drag_drop>Drag & Drop</a>

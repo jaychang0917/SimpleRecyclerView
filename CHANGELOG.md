@@ -1,5 +1,8 @@
 ##Change Log
 
+###Version 1.1.0 (2017-02-12)
+- Add load more view
+
 ###Version 1.0.6 (2017-02-10)
 - Update default cell listeners
 

@@ -4,17 +4,7 @@
 
 A RecyclerView extension for building list more easily.
 
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/basic_usage.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/multi_types.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/cell_ops.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/divider.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/spacing.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/empty_state.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/section_header.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/loadmore.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/drag.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/swipe.gif" width="160" height="280">
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/snappy.gif" width="160" height="280">
+##[Screenshot](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/screenshot.md)
 
 ##Table of Contents
 - [Basic Usage](#basic_usage) 
@@ -24,7 +14,10 @@ A RecyclerView extension for building list more easily.
 - [Spacing](#spacing)
 - [Empty State View](#empty_view) 
 - [Section Header](#section_header) 
-- [Auto Load More](#auto_load_more) 
+- [Auto Load More](#auto_load_more)
+ - [Load more threshold](#load_more_threshold)
+ - [Load more view](#load_more_view)
+ - [Load more to top](#load_more_top)
 - [Drag & Drop](#drag_drop)
 - [Swipe To Dismiss](#swipe_dismiss)
 - [Snappy](#snappy)
@@ -33,9 +26,9 @@ A RecyclerView extension for building list more easily.
  - [Cell Operations](#cell_ops_list)
 
 ##Sample Project
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code_1_0__4.png" width="100" height="100">
+<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code_1_1_0.png" width="100" height="100">
 
-[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView__1_0_4.apk)
+[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_1_0.apk)
 
 ##Installation
 In your project level build.gradle :
@@ -53,7 +46,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.0.6'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.1.0'
 }
 ```
 
@@ -331,6 +324,7 @@ simpleRecyclerView.setSectionHeader(sectionHeaderProvider);
 ```
 
 ##<a name=auto_load_more>Auto Load More</a>
+####<a name=load_more_threshold>Load more threshold</a>
 ```java
 // if the total beneath hidden cells count <= 4, onLoadMore() will be called. Default threshold is 0.
 simpleRecyclerView.setAutoLoadMoreThreshold(4);
@@ -342,6 +336,16 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
   }
 });
 ```
+####<a name=load_more_view>Load more view</a>
+```xml
+<com.jaychang.srv.SimpleRecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srv_layoutMode="linearVertical"
+    app:srv_loadMoreView="@layout/view_load_more" />
+```
+####<a name=load_more_top>Load more to top</a>
 If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
 ```java
 simpleRecyclerView.setLoadMoreToTop(true);
@@ -458,6 +462,7 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 | srv_dividerPaddingTop | Divider padding top |
 | srv_dividerPaddingBottom | Divider padding bottom |
 | srv_emptyView | Layout resource of empty state view to be shown when there is no data. |
+| srv_loadMoreView | Layout resource of load more view to be shown when loading more. |
 | srv_snappy | If set to true, snappy mode is enabled. Default `false` |
 | srv_snap_alignment | Snap alignment. Support `center` and `start` |
 

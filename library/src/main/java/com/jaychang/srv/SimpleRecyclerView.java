@@ -568,6 +568,8 @@ public class SimpleRecyclerView extends RecyclerView
 
   public void setLoadMoreView(View loadMoreView) {
     this.loadMoreViewCell = new InternalLoadMoreViewCell(loadMoreView);
+    // todo temp fix: load more doesn't work good with grid layout mode
+    setItemAnimator(null);
     loadMoreViewCell.setSpanSize(gridSpanCount);
   }
 

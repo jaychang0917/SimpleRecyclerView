@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.jaychang.srv.SimpleRecyclerView;
 
+import static android.R.attr.data;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
 @SuppressWarnings("unchecked")
@@ -22,8 +24,10 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
   private int firstHeaderTop;
   private int secondHeaderTop;
   private boolean isClipToPadding;
+  private Class clazz;
 
-  public SectionHeaderItemDecoration(SectionHeaderProvider provider) {
+  public SectionHeaderItemDecoration(Class clazz, SectionHeaderProvider provider) {
+    this.clazz = clazz;
     this.provider = provider;
   }
 
@@ -40,6 +44,10 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
     isClipToPadding = parent.getClipToPadding();
 
     int position = parent.getChildAdapterPosition(view);
+
+    if (!isSectionType(position)) {
+      return;
+    }
 
     if (sectionHeight == 0) {
       View sectionHeader = getAndMeasureSectionHeader(parent, position);
@@ -66,6 +74,9 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
       View view = parent.getChildAt(i);
       int position = parent.getChildAdapterPosition(view);
       if (position != NO_POSITION && !isSameSection(position)) {
+        if (!isSectionType(position)) {
+          continue;
+        }
         View sectionHeader = getAndMeasureSectionHeader(parent, position);
         int top = view.getTop() - sectionHeight;
         int bottom = view.getTop();
@@ -107,6 +118,10 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
     int position = layoutManager.findFirstVisibleItemPosition();
 
     if (position == NO_POSITION) {
+      return;
+    }
+
+    if (!isSectionType(position)) {
       return;
     }
 
@@ -157,7 +172,12 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
       return false;
     }
 
-    return provider.isSameSection(getItem(position), getItem(position - 1));
+    return isSectionType(position) && isSectionType(position - 1) &&
+      provider.isSameSection(getItem(position), getItem(position - 1));
+  }
+
+  private boolean isSectionType(int position) {
+    return clazz.getCanonicalName().equals(getItem(position).getClass().getCanonicalName());
   }
 
   private Object getItem(int position) {

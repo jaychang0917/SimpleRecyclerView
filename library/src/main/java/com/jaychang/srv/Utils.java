@@ -3,6 +3,8 @@ package com.jaychang.srv;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +57,11 @@ public final class Utils {
   public static boolean isScrollable(RecyclerView recyclerView) {
     return recyclerView.computeHorizontalScrollRange() > recyclerView.getWidth() ||
       recyclerView.computeVerticalScrollRange() > recyclerView.getHeight();
+  }
+
+  public static Class getTypeArgumentClass(Class clazz) {
+    Type type = ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[0];
+    return (Class) type;
   }
 
 }

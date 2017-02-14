@@ -695,13 +695,13 @@ public class SimpleRecyclerView extends RecyclerView
   /**
    * section header
    */
-  public void setSectionHeader(SectionHeaderProvider<?> provider) {
+  public <T> void setSectionHeader(SectionHeaderProvider<T> provider) {
     if (layoutManager instanceof GridLayoutManager) {
       // todo
       return;
     }
     if (layoutManager instanceof LinearLayoutManager) {
-      addItemDecoration(new SectionHeaderItemDecoration(provider));
+      addItemDecoration(new SectionHeaderItemDecoration(Utils.getTypeArgumentClass(provider.getClass()), provider));
     }
   }
 

@@ -43,7 +43,7 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
 
     int position = parent.getChildAdapterPosition(view);
 
-    if (!isSectionType(position) || position == NO_POSITION) {
+    if (position == NO_POSITION || !isSectionType(position)) {
       return;
     }
 

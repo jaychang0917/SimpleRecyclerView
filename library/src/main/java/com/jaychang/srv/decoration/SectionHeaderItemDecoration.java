@@ -9,8 +9,6 @@ import android.view.View;
 
 import com.jaychang.srv.SimpleRecyclerView;
 
-import static android.R.attr.data;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
 @SuppressWarnings("unchecked")
@@ -45,7 +43,7 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
 
     int position = parent.getChildAdapterPosition(view);
 
-    if (!isSectionType(position)) {
+    if (!isSectionType(position) || position == NO_POSITION) {
       return;
     }
 

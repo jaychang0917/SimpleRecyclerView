@@ -1,7 +1,7 @@
 ##Change Log
 
 ###Version 1.1.1 (2017-02-14)
-- fix [Issue#7](https://github.com/jaychang0917/SimpleRecyclerView/issues/7)
+- Fix [Issue#7](https://github.com/jaychang0917/SimpleRecyclerView/issues/7)
 
 ###Version 1.1.0 (2017-02-12)
 - Add load more view

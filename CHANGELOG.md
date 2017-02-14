@@ -1,5 +1,11 @@
 ##Change Log
 
+###Version 1.1.6 (2017-02-14)
+- Fix [Issue#8](https://github.com/jaychang0917/SimpleRecyclerView/issues/8)
+
+###Version 1.1.5 (2017-02-14)
+- Fix [Issue#10](https://github.com/jaychang0917/SimpleRecyclerView/issues/10) and disable item animator by default 
+
 ###Version 1.1.2 (2017-02-14)
 - Fix [Issue#6](https://github.com/jaychang0917/SimpleRecyclerView/issues/6)
 

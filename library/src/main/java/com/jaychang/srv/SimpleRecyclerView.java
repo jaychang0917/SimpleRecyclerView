@@ -99,6 +99,7 @@ public class SimpleRecyclerView extends RecyclerView
   private OnLoadMoreListener onLoadMoreListener;
   private boolean isLoadMoreToTop;
   private boolean isLoadingMore;
+  private boolean isLoadMoreViewShown;
 
   public SimpleRecyclerView(Context context) {
     this(context, null);
@@ -583,7 +584,7 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void showLoadMoreView() {
-    if (loadMoreViewCell == null) {
+    if (loadMoreViewCell == null || isLoadMoreViewShown) {
       isLoadingMore = true;
       return;
     }
@@ -604,17 +605,19 @@ public class SimpleRecyclerView extends RecyclerView
       });
     }
 
+    isLoadMoreViewShown = true;
     isLoadingMore = true;
   }
 
   private void hideLoadMoreView() {
-    if (loadMoreViewCell == null) {
+    if (loadMoreViewCell == null || !isLoadMoreViewShown) {
       isLoadingMore = false;
       return;
     }
 
     removeCell(loadMoreViewCell);
 
+    isLoadMoreViewShown = false;
     isLoadingMore = false;
   }
 

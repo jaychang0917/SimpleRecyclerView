@@ -1,5 +1,8 @@
 ##Change Log
 
+###Version 1.1.7 (2017-02-16)
+- Fix [Issue#15](https://github.com/jaychang0917/SimpleRecyclerView/issues/15)
+
 ###Version 1.1.6 (2017-02-15)
 - Fix [Issue#8](https://github.com/jaychang0917/SimpleRecyclerView/issues/8)
 

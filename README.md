@@ -46,7 +46,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.1.7'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.1.8'
 }
 ```
 
@@ -278,14 +278,15 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
 ```
 
 ##<a name=empty_view>Empty State View</a>
-The empty state view will be shown automatically when there is no data. 
+The empty state view will be shown automatically when there is no data. If you want to show the empty state view explicitly, you can set `srv_showEmptyStateView` attribute to `true` (Default `false`). 
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:srv_layoutMode="linearVertical" 
-    app:srv_emptyStateView="@layout/view_empty_state" />
+    app:srv_emptyStateView="@layout/view_empty_state" 
+    app:srv_showEmptyStateView="true|false" />
 ```
 
 ##<a name=section_header>Section Header</a>
@@ -461,7 +462,8 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 | srv_dividerPaddingRight | Divider padding right |
 | srv_dividerPaddingTop | Divider padding top |
 | srv_dividerPaddingBottom | Divider padding bottom |
-| srv_emptyView | Layout resource of empty state view to be shown when there is no data. |
+| srv_emptyStateView | Layout resource of empty state view to be shown when there is no data. |
+| srv_showEmptyStateView | Show empty state view explicitly. Default `false` |
 | srv_loadMoreView | Layout resource of load more view to be shown when loading more. |
 | srv_snappy | If set to true, snappy mode is enabled. Default `false` |
 | srv_snap_alignment | Snap alignment. Support `center` and `start` |

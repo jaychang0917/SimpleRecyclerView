@@ -25,6 +25,7 @@
         <attr name="srv_dividerPaddingTop" format="dimension|reference" />
         <attr name="srv_dividerPaddingBottom" format="dimension|reference" />
         <attr name="srv_emptyStateView" format="integer|reference" />
+        <attr name="srv_showEmptyStateView" format="boolean|reference" />
         <attr name="srv_loadMoreView" format="integer|reference" />
         <attr name="srv_snappy" format="boolean|reference" />
         <attr name="srv_snap_alignment" format="enum">

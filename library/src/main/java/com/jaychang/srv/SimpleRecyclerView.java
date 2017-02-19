@@ -66,6 +66,7 @@ public class SimpleRecyclerView extends RecyclerView
   private boolean isSnappyEnabled;
   private int snapAlignment;
   private int emptyStateViewRes;
+  private boolean showEmptyStateView;
   private int loadMoreViewRes;
 
   private SimpleAdapter adapter;
@@ -138,6 +139,7 @@ public class SimpleRecyclerView extends RecyclerView
     dividerPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_dividerPaddingBottom, 0);
     isSnappyEnabled = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_snappy, false);
     snapAlignment = typedArray.getInt(R.styleable.srv_SimpleRecyclerView_srv_snap_alignment, 0);
+    showEmptyStateView = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_showEmptyStateView, false);
     emptyStateViewRes = typedArray.getResourceId(R.styleable.srv_SimpleRecyclerView_srv_emptyStateView, 0);
     loadMoreViewRes = typedArray.getResourceId(R.styleable.srv_SimpleRecyclerView_srv_loadMoreView, 0);
     typedArray.recycle();
@@ -187,6 +189,9 @@ public class SimpleRecyclerView extends RecyclerView
   private void setupEmptyView() {
     if (emptyStateViewRes != 0) {
       setEmptyStateView(emptyStateViewRes);
+    }
+    if (showEmptyStateView) {
+      showEmptyStateView();
     }
   }
 
@@ -527,7 +532,7 @@ public class SimpleRecyclerView extends RecyclerView
     adapter.registerAdapterDataObserver(adapterDataObserver);
   }
 
-  private void showEmptyStateView() {
+  public void showEmptyStateView() {
     if (isRefreshing) {
       isRefreshing = false;
       return;
@@ -542,7 +547,7 @@ public class SimpleRecyclerView extends RecyclerView
     isEmptyViewShown = true;
   }
 
-  private void hideEmptyStateView() {
+  public void hideEmptyStateView() {
     if (!isEmptyViewShown || emptyStateViewCell == null) {
       return;
     }

@@ -26,9 +26,9 @@ A RecyclerView extension for building list more easily.
  - [Cell Operations](#cell_ops_list)
 
 ##Sample Project
-<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code_1_1_0.png" width="100" height="100">
+<img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code_1_1_9.png" width="100" height="100">
 
-[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_1_0.apk)
+[Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_1_9.apk)
 
 ##Installation
 In your project level build.gradle :
@@ -46,7 +46,7 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.1.8'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:1.1.9'
 }
 ```
 

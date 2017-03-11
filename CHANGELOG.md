@@ -1,6 +1,9 @@
 ##Change Log
 
 ###Version 1.1.8 (2017-02-19)
+- Fix [Issue#21](https://github.com/jaychang0917/SimpleRecyclerView/issues/21)
+
+###Version 1.1.8 (2017-02-19)
 - Expose `showEmptyStateView` and `hideEmptyStateView` methods
 - Add `showEmptyStateView` attribute
 

@@ -175,7 +175,14 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
   }
 
   private boolean isSectionType(int position) {
-    return clazz.getCanonicalName().equals(getItem(position).getClass().getCanonicalName());
+    Class<?> aClass = getItem(position).getClass();
+
+    // handle realm proxy class
+    if (aClass.getName().endsWith("Proxy")) {
+      aClass = aClass.getSuperclass();
+    }
+
+    return clazz.getCanonicalName().equals(aClass.getCanonicalName());
   }
 
   private Object getItem(int position) {

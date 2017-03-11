@@ -142,6 +142,12 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
     }
   }
 
+  private void addCellTypes(List<SimpleCell> cells) {
+    for (SimpleCell cell : cells) {
+      addCellType(cell);
+    }
+  }
+
   private void removeCellType(SimpleCell cell) {
     boolean hasCellType = false;
 
@@ -302,6 +308,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   void setCells(List<? extends SimpleCell> cells) {
     this.cells.clear();
     this.cells.addAll(cells);
+    addCellTypes(this.cells);
   }
 
   @Override

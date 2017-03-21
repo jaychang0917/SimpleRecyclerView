@@ -4,9 +4,9 @@
 
 A RecyclerView extension for building list more easily.
 
-##[Screenshot](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/screenshot.md)
+## [Screenshot](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/screenshot.md)
 
-##Table of Contents
+## Table of Contents
 - [Basic Usage](#basic_usage) 
 - [Multiple Types](#multi_types)
 - [Cell Operations](#cell_ops) 
@@ -25,12 +25,12 @@ A RecyclerView extension for building list more easily.
  - [Attributes](#attr)
  - [Cell Operations](#cell_ops_list)
 
-##Sample Project
+## Sample Project
 <img src="https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/qr_code_1_1_9.png" width="100" height="100">
 
 [Sample apk](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/SimpleRecyclerView_1_1_9.apk)
 
-##Installation
+## Installation
 In your project level build.gradle :
 
 ```java
@@ -52,9 +52,9 @@ dependencies {
 
 ---
 
-##<a name=basic_usage>Basic Usage</a>
+## <a name=basic_usage>Basic Usage</a>
 Basically, there are three steps to build your list.
-####1. Configure the SimpleRecyclerView
+#### 1. Configure the SimpleRecyclerView
 >[Full attributes list](#attr)
 
 ```xml
@@ -67,7 +67,7 @@ Basically, there are three steps to build your list.
     app:srv_gridSpanSequence="integer string (e.g. 2233)"
     ... />
 ```
-####2. Define the cell by extending `SimpleCell<T,VH>`
+#### 2. Define the cell by extending `SimpleCell<T,VH>`
 ```java
 /**
  * Accept two type arguments,
@@ -135,7 +135,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
 
 }
 ```
-####3. Create cell(s) and add them to the SimpleRecyclerView
+#### 3. Create cell(s) and add them to the SimpleRecyclerView
 ```java
 List<Book> books = DataUtils.getBooks();
 List<BookCell> cells = new ArrayList<>();
@@ -162,7 +162,7 @@ simpleRecyclerView.addCells(cells);
 ```
 Then, there you go!
 
-##<a name=multi_types>Multiple Types</a>
+## <a name=multi_types>Multiple Types</a>
 SimpleRecyclerView supports multiple cell types. You can add different type of cells to it just like adding different type of objects to a list. The SimpleRecyclerView will handle the rest for you.
 ```java
 List<Book> books = DataUtils.getBooks();
@@ -185,7 +185,7 @@ for (Ad ad : ads) {
 simpleRecyclerView.addCells(cells);
 ```
 
-##<a name=cell_ops>Cell Operations</a>
+## <a name=cell_ops>Cell Operations</a>
 SimpleRecyclerView provides basic CRUD cell operations. 
 >[Full cell operations list](#cell_ops_list)
 
@@ -247,7 +247,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
 }
 ```
 
-##<a name=divider>Divider</a>
+## <a name=divider>Divider</a>
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
     android:id="@+id/recyclerView"
@@ -264,7 +264,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
     app:srv_dividerPaddingBottom="dp" />
 ```
 
-##<a name=spacing>Spacing</a>
+## <a name=spacing>Spacing</a>
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
     android:id="@+id/recyclerView"
@@ -277,7 +277,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
     app:srv_isSpacingIncludeEdge="true|false" />
 ```
 
-##<a name=empty_view>Empty State View</a>
+## <a name=empty_view>Empty State View</a>
 The empty state view will be shown automatically when there is no data. If you want to show the empty state view explicitly, you can set `srv_showEmptyStateView` attribute to `true` (Default `false`). 
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
@@ -289,7 +289,7 @@ The empty state view will be shown automatically when there is no data. If you w
     app:srv_showEmptyStateView="true|false" />
 ```
 
-##<a name=section_header>Section Header</a>
+## <a name=section_header>Section Header</a>
 You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SectionHeaderProviderAdapter<T>`][3] is also provided. 
 ```java
 SectionHeaderProvider<Book> sectionHeaderProvider = new SectionHeaderProviderAdapter<Book>() {
@@ -324,8 +324,8 @@ SectionHeaderProvider<Book> sectionHeaderProvider = new SectionHeaderProviderAda
 simpleRecyclerView.setSectionHeader(sectionHeaderProvider);
 ```
 
-##<a name=auto_load_more>Auto Load More</a>
-####<a name=load_more_threshold>Load more threshold</a>
+## <a name=auto_load_more>Auto Load More</a>
+#### <a name=load_more_threshold>Load more threshold</a>
 ```java
 // if the total beneath hidden cells count <= 4, onLoadMore() will be called. Default threshold is 0.
 simpleRecyclerView.setAutoLoadMoreThreshold(4);
@@ -337,7 +337,7 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
   }
 });
 ```
-####<a name=load_more_view>Load more view</a>
+#### <a name=load_more_view>Load more view</a>
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
     android:id="@+id/recyclerView"
@@ -346,13 +346,13 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
     app:srv_layoutMode="linearVertical"
     app:srv_loadMoreView="@layout/view_load_more" />
 ```
-####<a name=load_more_top>Load more to top</a>
+#### <a name=load_more_top>Load more to top</a>
 If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
 ```java
 simpleRecyclerView.setLoadMoreToTop(true);
 ```
 
-##<a name=drag_drop>Drag & Drop</a>
+## <a name=drag_drop>Drag & Drop</a>
 You can enable drag and drop by providing a [`DragAndDropCallback<T>`][4] to `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
 ```java
 DragAndDropCallback<Book> dragAndDropCallback = new DragAndDropCallback<Book>() {
@@ -393,7 +393,7 @@ simpleRecyclerView.enableDragAndDrop(R.id.dragHandle, dragAndDropCallback);
 simpleRecyclerView.enableDragAndDrop(dragAndDropCallback);
 ```
 
-##<a name=swipe_dismiss>Swipe To Dismiss</a>
+## <a name=swipe_dismiss>Swipe To Dismiss</a>
 You can enable swipe to dismiss by providing a [`SwipeToDismissCallback<T>`][5] to `enableSwipeToDismiss(callback, swipeDirections)`. All callback methods of `SwipeToDismissCallback<T>` are optional.
 ```java
 SwipeToDismissCallback<Book> swipeToDismissCallback = new SwipeToDismissCallback<Book>() {
@@ -427,7 +427,7 @@ SwipeToDismissCallback<Book> swipeToDismissCallback = new SwipeToDismissCallback
 simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 ```
 
-##<a name=snappy>Snappy</a>
+## <a name=snappy>Snappy</a>
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
    android:id="@+id/recyclerView"
@@ -439,9 +439,9 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 ```
 ---
 
-##<a name=refs>Reference</a>
+## <a name=refs>Reference</a>
 
-###<a name=attr>Attributes</a>
+### <a name=attr>Attributes</a>
 
 >All attrs have coressponding java method.
 
@@ -468,7 +468,7 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 | srv_snappy | If set to true, snappy mode is enabled. Default `false` |
 | srv_snap_alignment | Snap alignment. Support `center` and `start` |
 
-###<a name=cell_ops_list>Cell Operations</a>
+### <a name=cell_ops_list>Cell Operations</a>
 | Operation                         | Remark                                |
 |  --------------------------------------------- | ------------------------------------------------|
 | addCell(SimpleCell cell)                       | Add the cell to the end of list|
@@ -499,7 +499,7 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 [5]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/SwipeToDismissCallback.java
 
 
-##License
+## License
 ```
 Copyright 2017 Jay Chang
 

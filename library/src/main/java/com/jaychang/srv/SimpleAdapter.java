@@ -252,7 +252,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
 
   @Override
   public void removeCells(int fromPosition, int toPosition) {
-    for (int i = fromPosition; i <= toPosition; i++) {
+    for (int i = toPosition; i >= fromPosition; i--) {
       SimpleCell cell = cells.get(i);
       cells.remove(cell);
       removeCellType(cell);

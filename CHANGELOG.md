@@ -1,6 +1,9 @@
 ##Change Log
 
-###Version 1.1.8 (2017-02-19)
+###Version 1.1.10 (2017-03-11)
+- Fix section header bug 
+
+###Version 1.1.9 (2017-03-11)
 - Fix [Issue#21](https://github.com/jaychang0917/SimpleRecyclerView/issues/21)
 
 ###Version 1.1.8 (2017-02-19)

@@ -788,7 +788,7 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   @Override
-  public void updateCells(int fromPosition, int toPosition, List<Object> payloads) {
+  public void updateCells(int fromPosition, int toPosition, List<?> payloads) {
     adapter.updateCells(fromPosition, toPosition, payloads);
   }
 

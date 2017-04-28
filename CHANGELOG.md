@@ -1,6 +1,6 @@
 ## Change Log
 
-### Version 1.1.13 (2017-04-28)
+### Version 1.1.15 (2017-04-28)
 - Update `updateCells()` signature
 
 ### Version 1.1.11 (2017-04-03)

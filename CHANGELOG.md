@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.1.13 (2017-04-28)
+- Update `updateCells()` signature
+
 ### Version 1.1.11 (2017-04-03)
 - Fix [Issue#24](https://github.com/jaychang0917/SimpleRecyclerView/issues/24)
 

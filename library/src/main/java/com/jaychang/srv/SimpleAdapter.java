@@ -278,7 +278,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   }
 
   @Override
-  public void updateCells(int fromPosition, int toPosition, List<Object> payloads) {
+  public void updateCells(int fromPosition, int toPosition, List<?> payloads) {
     notifyItemRangeChanged(fromPosition, toPosition - fromPosition + 1, payloads);
   }
 

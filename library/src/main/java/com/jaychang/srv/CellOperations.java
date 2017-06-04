@@ -34,7 +34,7 @@ interface CellOperations {
 
   void updateCell(int atPosition, Object payload);
 
-  void updateCells(int fromPosition, int toPosition, List<Object> payloads);
+  void updateCells(int fromPosition, int toPosition, Object payloads);
 
   SimpleCell getCell(int atPosition);
 

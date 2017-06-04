@@ -46,9 +46,10 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:1.1.10'
+    compile 'com.github.jaychang0917:SimpleRecyclerView:{latest_version}'
 }
 ```
+[![Release](https://jitpack.io/v/jaychang0917/SimpleRecyclerView.svg)](https://jitpack.io/#jaychang0917/SimpleRecyclerView)
 
 ---
 

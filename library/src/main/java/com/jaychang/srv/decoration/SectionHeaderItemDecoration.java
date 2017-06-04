@@ -113,6 +113,10 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
       return;
     }
 
+    if (layoutManager == null) {
+      layoutManager = (LinearLayoutManager) parent.getLayoutManager();
+    }
+
     int position = layoutManager.findFirstVisibleItemPosition();
 
     if (position == NO_POSITION) {

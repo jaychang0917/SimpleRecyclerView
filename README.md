@@ -467,7 +467,7 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 | srv_showEmptyStateView | Show empty state view explicitly. Default `false` |
 | srv_loadMoreView | Layout resource of load more view to be shown when loading more. |
 | srv_snappy | If set to true, snappy mode is enabled. Default `false` |
-| srv_snap_alignment | Snap alignment. Support `center` and `start` |
+| srv_snap_alignment | Snap alignment. Support `center` and `start`. Default `center` |
 
 ### <a name=cell_ops_list>Cell Operations</a>
 | Operation                         | Remark                                |

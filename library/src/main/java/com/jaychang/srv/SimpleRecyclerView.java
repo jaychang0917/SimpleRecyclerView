@@ -70,7 +70,6 @@ public class SimpleRecyclerView extends RecyclerView
   private int loadMoreViewRes;
 
   private SimpleAdapter adapter;
-  private LayoutManager layoutManager;
   private AdapterDataObserver adapterDataObserver = new AdapterDataObserver() {
     @Override
     public void onChanged() {
@@ -279,20 +278,20 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private int getFirstVisibleItemPosition() {
-    if (layoutManager instanceof GridLayoutManager) {
-      return ((GridLayoutManager) layoutManager).findFirstVisibleItemPosition();
-    } else if (layoutManager instanceof LinearLayoutManager) {
-      return ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
+    if (getLayoutManager() instanceof GridLayoutManager) {
+      return ((GridLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
+    } else if (getLayoutManager() instanceof LinearLayoutManager) {
+      return ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
     } else {
       return -1;
     }
   }
 
   private int getLastVisibleItemPosition() {
-    if (layoutManager instanceof GridLayoutManager) {
-      return ((GridLayoutManager) layoutManager).findLastVisibleItemPosition();
-    } else if (layoutManager instanceof LinearLayoutManager) {
-      return ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
+    if (getLayoutManager() instanceof GridLayoutManager) {
+      return ((GridLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
+    } else if (getLayoutManager() instanceof LinearLayoutManager) {
+      return ((LinearLayoutManager) getLayoutManager()).findLastVisibleItemPosition();
     } else {
       return -1;
     }
@@ -338,19 +337,16 @@ public class SimpleRecyclerView extends RecyclerView
    * layout modes
    */
   public void useLinearVerticalMode() {
-    layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-    setLayoutManager(layoutManager);
+    setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
   }
 
   public void useLinearHorizontalMode() {
-    layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-    setLayoutManager(layoutManager);
+    setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
   }
 
   public void useGridMode(int spanCount) {
     setGridSpanCount(spanCount);
-    layoutManager = new GridLayoutManager(getContext(), spanCount);
-    setLayoutManager(layoutManager);
+    setLayoutManager(new GridLayoutManager(getContext(), spanCount));
 
     GridLayoutManager.SpanSizeLookup spanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
       @Override
@@ -363,7 +359,7 @@ public class SimpleRecyclerView extends RecyclerView
       }
     };
     spanSizeLookup.setSpanIndexCacheEnabled(true);
-    ((GridLayoutManager) layoutManager).setSpanSizeLookup(spanSizeLookup);
+    ((GridLayoutManager) getLayoutManager()).setSpanSizeLookup(spanSizeLookup);
   }
 
   public void useGridModeWithSequence(int first, int... rest) {
@@ -381,8 +377,7 @@ public class SimpleRecyclerView extends RecyclerView
     }
 
     setGridSpanCount(lcm);
-    layoutManager = new GridLayoutManager(getContext(), lcm);
-    setLayoutManager(layoutManager);
+    setLayoutManager(new GridLayoutManager(getContext(), lcm));
 
     GridLayoutManager.SpanSizeLookup spanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
       @Override
@@ -395,7 +390,7 @@ public class SimpleRecyclerView extends RecyclerView
       }
     };
     spanSizeLookup.setSpanIndexCacheEnabled(true);
-    ((GridLayoutManager) layoutManager).setSpanSizeLookup(spanSizeLookup);
+    ((GridLayoutManager) getLayoutManager()).setSpanSizeLookup(spanSizeLookup);
   }
 
   private void setGridSpanCount(int spanCount) {
@@ -412,7 +407,7 @@ public class SimpleRecyclerView extends RecyclerView
   private void showDividerInternal(@ColorInt int color,
                                    int paddingLeft, int paddingTop,
                                    int paddingRight, int paddingBottom) {
-    if (layoutManager instanceof GridLayoutManager) {
+    if (getLayoutManager() instanceof GridLayoutManager) {
       if (dividerOrientation == 0) {
         addDividerItemDecoration(color, DividerItemDecoration.HORIZONTAL,
           paddingLeft, paddingTop, paddingRight, paddingBottom);
@@ -425,8 +420,8 @@ public class SimpleRecyclerView extends RecyclerView
         addDividerItemDecoration(color, DividerItemDecoration.HORIZONTAL,
           paddingLeft, paddingTop, paddingRight, paddingBottom);
       }
-    } else if (layoutManager instanceof LinearLayoutManager) {
-      int orientation = ((LinearLayoutManager) layoutManager).getOrientation();
+    } else if (getLayoutManager() instanceof LinearLayoutManager) {
+      int orientation = ((LinearLayoutManager) getLayoutManager()).getOrientation();
       addDividerItemDecoration(color, orientation,
         paddingLeft, paddingTop, paddingRight, paddingBottom);
     }
@@ -485,14 +480,14 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void setLinearSpacingInternal(int spacing, boolean includeEdge) {
-    int orientation = ((LinearLayoutManager) layoutManager).getOrientation();
+    int orientation = ((LinearLayoutManager) getLayoutManager()).getOrientation();
     addItemDecoration(LinearSpacingItemDecoration.newBuilder().spacing(spacing).orientation(orientation).includeEdge(includeEdge).build());
   }
 
   private void setSpacingInternal(int verSpacing, int horSpacing, boolean includeEdge) {
-    if (layoutManager instanceof GridLayoutManager) {
+    if (getLayoutManager() instanceof GridLayoutManager) {
       setGridSpacingInternal(verSpacing, horSpacing, includeEdge);
-    } else if (layoutManager instanceof LinearLayoutManager) {
+    } else if (getLayoutManager() instanceof LinearLayoutManager) {
       setLinearSpacingInternal(verSpacing, includeEdge);
     }
   }
@@ -705,11 +700,11 @@ public class SimpleRecyclerView extends RecyclerView
    * section header
    */
   public <T> void setSectionHeader(SectionHeaderProvider<T> provider) {
-    if (layoutManager instanceof GridLayoutManager) {
+    if (getLayoutManager() instanceof GridLayoutManager) {
       // todo
       return;
     }
-    if (layoutManager instanceof LinearLayoutManager) {
+    if (getLayoutManager() instanceof LinearLayoutManager) {
       addItemDecoration(new SectionHeaderItemDecoration(Utils.getTypeArgumentClass(provider.getClass()), provider));
     }
   }

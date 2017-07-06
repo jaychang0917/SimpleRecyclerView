@@ -273,7 +273,6 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void handleLoadMore() {
-    isLoadingMore = true;
     onLoadMoreListener.onLoadMore(this);
   }
 

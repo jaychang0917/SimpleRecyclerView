@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.1.19 (2017-08-02)
+- Fix attribute autocomplete not showing issue
+
 ### Version 1.1.18 (2017-07-05)
 - Bug fix
 

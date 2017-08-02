@@ -120,27 +120,27 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void initAttrs(Context context, AttributeSet attrs, int defStyle) {
-    TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.srv_SimpleRecyclerView, defStyle, 0);
-    layoutMode = typedArray.getInt(R.styleable.srv_SimpleRecyclerView_srv_layoutMode, 0);
-    gridSpanCount = typedArray.getInt(R.styleable.srv_SimpleRecyclerView_srv_gridSpanCount, 0);
-    gridSpanSequence = typedArray.getString(R.styleable.srv_SimpleRecyclerView_srv_gridSpanSequence);
-    spacing = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_spacing, 0);
-    verticalSpacing = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_verticalSpacing, 0);
-    horizontalSpacing = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_horizontalSpacing, 0);
-    isSpacingIncludeEdge = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_isSpacingIncludeEdge, false);
-    showDivider = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_showDivider, false);
-    showLastDivider = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_showLastDivider, false);
-    dividerColor = typedArray.getColor(R.styleable.srv_SimpleRecyclerView_srv_dividerColor, 0);
-    dividerOrientation = typedArray.getInt(R.styleable.srv_SimpleRecyclerView_srv_dividerOrientation, 2);
-    dividerPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_dividerPaddingLeft, 0);
-    dividerPaddingRight = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_dividerPaddingRight, 0);
-    dividerPaddingTop = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_dividerPaddingTop, 0);
-    dividerPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.srv_SimpleRecyclerView_srv_dividerPaddingBottom, 0);
-    isSnappyEnabled = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_snappy, false);
-    snapAlignment = typedArray.getInt(R.styleable.srv_SimpleRecyclerView_srv_snap_alignment, 0);
-    showEmptyStateView = typedArray.getBoolean(R.styleable.srv_SimpleRecyclerView_srv_showEmptyStateView, false);
-    emptyStateViewRes = typedArray.getResourceId(R.styleable.srv_SimpleRecyclerView_srv_emptyStateView, 0);
-    loadMoreViewRes = typedArray.getResourceId(R.styleable.srv_SimpleRecyclerView_srv_loadMoreView, 0);
+    TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SimpleRecyclerView, defStyle, 0);
+    layoutMode = typedArray.getInt(R.styleable.SimpleRecyclerView_srv_layoutMode, 0);
+    gridSpanCount = typedArray.getInt(R.styleable.SimpleRecyclerView_srv_gridSpanCount, 0);
+    gridSpanSequence = typedArray.getString(R.styleable.SimpleRecyclerView_srv_gridSpanSequence);
+    spacing = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_spacing, 0);
+    verticalSpacing = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_verticalSpacing, 0);
+    horizontalSpacing = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_horizontalSpacing, 0);
+    isSpacingIncludeEdge = typedArray.getBoolean(R.styleable.SimpleRecyclerView_srv_isSpacingIncludeEdge, false);
+    showDivider = typedArray.getBoolean(R.styleable.SimpleRecyclerView_srv_showDivider, false);
+    showLastDivider = typedArray.getBoolean(R.styleable.SimpleRecyclerView_srv_showLastDivider, false);
+    dividerColor = typedArray.getColor(R.styleable.SimpleRecyclerView_srv_dividerColor, 0);
+    dividerOrientation = typedArray.getInt(R.styleable.SimpleRecyclerView_srv_dividerOrientation, 2);
+    dividerPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_dividerPaddingLeft, 0);
+    dividerPaddingRight = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_dividerPaddingRight, 0);
+    dividerPaddingTop = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_dividerPaddingTop, 0);
+    dividerPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.SimpleRecyclerView_srv_dividerPaddingBottom, 0);
+    isSnappyEnabled = typedArray.getBoolean(R.styleable.SimpleRecyclerView_srv_snappy, false);
+    snapAlignment = typedArray.getInt(R.styleable.SimpleRecyclerView_srv_snap_alignment, 0);
+    showEmptyStateView = typedArray.getBoolean(R.styleable.SimpleRecyclerView_srv_showEmptyStateView, false);
+    emptyStateViewRes = typedArray.getResourceId(R.styleable.SimpleRecyclerView_srv_emptyStateView, 0);
+    loadMoreViewRes = typedArray.getResourceId(R.styleable.SimpleRecyclerView_srv_loadMoreView, 0);
     typedArray.recycle();
   }
 

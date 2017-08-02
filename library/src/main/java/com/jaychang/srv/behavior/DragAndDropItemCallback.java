@@ -118,7 +118,7 @@ class DragAndDropItemCallback extends ItemTouchHelper.Callback {
       viewHolder.itemView.setSelected(true);
       viewHolder.itemView.setAlpha(0.95f);
       if (Build.VERSION.SDK_INT >= 21 && animator == null) {
-        animator = AnimatorInflater.loadStateListAnimator(viewHolder.itemView.getContext(), R.animator.srv_raise);
+        animator = AnimatorInflater.loadStateListAnimator(viewHolder.itemView.getContext(), R.animator.raise);
         viewHolder.itemView.setStateListAnimator(animator);
       }
     }

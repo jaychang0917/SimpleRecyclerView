@@ -13,7 +13,7 @@ class InternalEmptyStateViewCell extends SimpleCell<View, SimpleViewHolder> {
 
   @Override
   public int getLayoutRes() {
-    return R.layout.srv_interval_view;
+    return R.layout.interval_view;
   }
 
   @NonNull

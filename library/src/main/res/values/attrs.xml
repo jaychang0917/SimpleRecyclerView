@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="srv_SimpleRecyclerView">
+    <declare-styleable name="SimpleRecyclerView">
         <attr name="srv_layoutMode" format="enum">
             <enum name="linearVertical" value="0" />
             <enum name="linearHorizontal" value="1" />

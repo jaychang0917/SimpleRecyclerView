@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 
 public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
 
-  @Deprecated
   public interface OnCellClickListener<T> {
     void onCellClicked(T item);
   }
 
-  @Deprecated
   public interface OnCellLongClickListener<T> {
     void onCellLongClicked(T item);
   }

@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
 
   public interface OnCellClickListener<T> {
-    void onCellClicked(T item);
+    void onCellClicked(@NonNull T item);
   }
 
   public interface OnCellLongClickListener<T> {
-    void onCellLongClicked(T item);
+    void onCellLongClicked(@NonNull T item);
   }
 
   public interface OnCellClickListener2<CELL, VH, T> {
-    void onCellClicked(CELL cell, VH viewHolder, T item);
+    void onCellClicked(@NonNull CELL cell, @NonNull VH viewHolder, @NonNull T item);
   }
 
   public interface OnCellLongClickListener2<CELL, VH, T> {
-    void onCellLongClicked(CELL cell, VH viewHolder, T item);
+    void onCellLongClicked(@NonNull CELL cell, @NonNull VH viewHolder, @NonNull T item);
   }
 
   private int spanSize = 1;
@@ -31,24 +31,24 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
   private OnCellLongClickListener onCellLongClickListener;
   private OnCellLongClickListener2 onCellLongClickListener2;
 
-  public SimpleCell(T item) {
+  public SimpleCell(@NonNull T item) {
     this.item = item;
   }
 
   @LayoutRes protected abstract int getLayoutRes();
 
-  @NonNull protected abstract VH onCreateViewHolder(ViewGroup parent, View cellView);
+  @NonNull protected abstract VH onCreateViewHolder(@NonNull ViewGroup parent, @NonNull View cellView);
 
-  protected abstract void onBindViewHolder(VH holder, int position, Context context, Object payload);
+  protected abstract void onBindViewHolder(@NonNull VH holder, int position, @NonNull Context context, @NonNull Object payload);
 
-  protected void onUnbindViewHolder(VH holder) {
+  protected void onUnbindViewHolder(@NonNull VH holder) {
   }
 
-  public T getItem() {
+  @NonNull public T getItem() {
     return item;
   }
 
-  public void setItem(T item) {
+  public void setItem(@NonNull T item) {
     this.item = item;
   }
 
@@ -62,31 +62,27 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
     this.spanSize = spanSize;
   }
 
-  @Deprecated
-  public void setOnCellClickListener(OnCellClickListener onCellClickListener) {
+  public void setOnCellClickListener(@NonNull OnCellClickListener onCellClickListener) {
     this.onCellClickListener = onCellClickListener;
   }
 
-  @Deprecated
-  public void setOnCellLongClickListener(OnCellLongClickListener onCellLongClickListener) {
+  public void setOnCellLongClickListener(@NonNull OnCellLongClickListener onCellLongClickListener) {
     this.onCellLongClickListener = onCellLongClickListener;
   }
 
-  @Deprecated
   public OnCellClickListener getOnCellClickListener() {
     return onCellClickListener;
   }
 
-  @Deprecated
   public OnCellLongClickListener getOnCellLongClickListener() {
     return onCellLongClickListener;
   }
 
-  public void setOnCellClickListener2(OnCellClickListener2 onCellClickListener2) {
+  public void setOnCellClickListener2(@NonNull OnCellClickListener2 onCellClickListener2) {
     this.onCellClickListener2 = onCellClickListener2;
   }
 
-  public void setOnCellLongClickListener2(OnCellLongClickListener2 onCellLongClickListener2) {
+  public void setOnCellLongClickListener2(@NonNull OnCellLongClickListener2 onCellLongClickListener2) {
     this.onCellLongClickListener2 = onCellLongClickListener2;
   }
 

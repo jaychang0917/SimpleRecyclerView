@@ -10,6 +10,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -365,7 +366,7 @@ public class SimpleRecyclerView extends RecyclerView
     useGridModeWithSequence(Utils.toIntList(first, rest));
   }
 
-  public void useGridModeWithSequence(List<Integer> sequence) {
+  public void useGridModeWithSequence(@NonNull List<Integer> sequence) {
     final int lcm = Utils.lcm(sequence);
     final ArrayList<Integer> sequenceList = new ArrayList<>();
     for (int i = 0; i < sequence.size(); i++) {
@@ -457,7 +458,7 @@ public class SimpleRecyclerView extends RecyclerView
       Utils.dpToPx(getContext(), paddingRightDp), Utils.dpToPx(getContext(), paddingBottomDp));
   }
 
-  public void dontShowDividerForCellType(Class<?>... classes) {
+  public void dontShowDividerForCellType(@NonNull Class<?>... classes) {
     if (noDividerCellTypes == null) {
       noDividerCellTypes = new ArrayList<>();
     }
@@ -556,7 +557,7 @@ public class SimpleRecyclerView extends RecyclerView
     setEmptyStateView(view);
   }
 
-  public void setEmptyStateView(View emptyStateView) {
+  public void setEmptyStateView(@NonNull View emptyStateView) {
     this.emptyStateViewCell = new InternalEmptyStateViewCell(emptyStateView);
     emptyStateViewCell.setSpanSize(gridSpanCount);
   }
@@ -569,7 +570,7 @@ public class SimpleRecyclerView extends RecyclerView
     setLoadMoreView(view);
   }
 
-  public void setLoadMoreView(View loadMoreView) {
+  public void setLoadMoreView(@NonNull View loadMoreView) {
     this.loadMoreViewCell = new InternalLoadMoreViewCell(loadMoreView);
     loadMoreViewCell.setSpanSize(gridSpanCount);
   }
@@ -639,7 +640,7 @@ public class SimpleRecyclerView extends RecyclerView
     return isLoadMoreToTop;
   }
 
-  public void setOnLoadMoreListener(OnLoadMoreListener listener) {
+  public void setOnLoadMoreListener(@NonNull OnLoadMoreListener listener) {
     this.onLoadMoreListener = listener;
   }
 
@@ -651,11 +652,11 @@ public class SimpleRecyclerView extends RecyclerView
   /**
    * drag & drop
    */
-  public void enableDragAndDrop(DragAndDropCallback dragAndDropCallback) {
+  public void enableDragAndDrop(@NonNull DragAndDropCallback dragAndDropCallback) {
     enableDragAndDrop(0, dragAndDropCallback);
   }
 
-  public void enableDragAndDrop(@IdRes int dragHandleId, DragAndDropCallback dragAndDropCallback) {
+  public void enableDragAndDrop(@IdRes int dragHandleId, @NonNull DragAndDropCallback dragAndDropCallback) {
     DragAndDropOptions options = new DragAndDropOptions();
     options.setDragHandleId(dragHandleId);
     options.setCanLongPressToDrag(dragHandleId == 0);
@@ -669,11 +670,11 @@ public class SimpleRecyclerView extends RecyclerView
   /**
    * swipe to dismiss
    */
-  public void enableSwipeToDismiss(SwipeToDismissCallback swipeToDismissCallback, SwipeDirection... directions) {
+  public void enableSwipeToDismiss(@NonNull SwipeToDismissCallback swipeToDismissCallback, @NonNull SwipeDirection... directions) {
     enableSwipeToDismiss(swipeToDismissCallback, new HashSet<>(Arrays.asList(directions)));
   }
 
-  public void enableSwipeToDismiss(SwipeToDismissCallback swipeToDismissCallback, Set<SwipeDirection> directions) {
+  public void enableSwipeToDismiss(@NonNull SwipeToDismissCallback swipeToDismissCallback, @NonNull Set<SwipeDirection> directions) {
     SwipeToDismissOptions options = new SwipeToDismissOptions();
     options.setEnableDefaultFadeOutEffect(swipeToDismissCallback.enableDefaultFadeOutEffect());
     options.setSwipeToDismissCallback(swipeToDismissCallback);
@@ -689,7 +690,7 @@ public class SimpleRecyclerView extends RecyclerView
     enableSnappy(SnapAlignment.CENTER);
   }
 
-  public void enableSnappy(SnapAlignment alignment) {
+  public void enableSnappy(@NonNull SnapAlignment alignment) {
     SnapHelper snapHelper = alignment.equals(SnapAlignment.CENTER) ?
       new LinearSnapHelper() : new StartSnapHelper(spacing);
     snapHelper.attachToRecyclerView(this);
@@ -698,7 +699,7 @@ public class SimpleRecyclerView extends RecyclerView
   /**
    * section header
    */
-  public <T> void setSectionHeader(SectionHeaderProvider<T> provider) {
+  public <T> void setSectionHeader(@NonNull SectionHeaderProvider<T> provider) {
     if (getLayoutManager() instanceof GridLayoutManager) {
       // todo
       return;
@@ -712,52 +713,52 @@ public class SimpleRecyclerView extends RecyclerView
    * cell operations
    */
   @Override
-  public void addCell(SimpleCell cell) {
+  public void addCell(@NonNull SimpleCell cell) {
     adapter.addCell(cell);
   }
 
   @Override
-  public void addCell(int atPosition, SimpleCell cell) {
+  public void addCell(int atPosition, @NonNull SimpleCell cell) {
     adapter.addCell(atPosition, cell);
   }
 
   @Override
-  public void addCells(List<? extends SimpleCell> cells) {
+  public void addCells(@NonNull List<? extends SimpleCell> cells) {
     adapter.addCells(cells);
   }
 
   @Override
-  public void addCells(SimpleCell... cells) {
+  public void addCells(@NonNull SimpleCell... cells) {
     adapter.addCells(cells);
   }
 
   @Override
-  public void addCells(int fromPosition, List<? extends SimpleCell> cells) {
+  public void addCells(int fromPosition, @NonNull List<? extends SimpleCell> cells) {
     adapter.addCells(fromPosition, cells);
   }
 
   @Override
-  public void addCells(int fromPosition, SimpleCell... cells) {
+  public void addCells(int fromPosition, @NonNull SimpleCell... cells) {
     adapter.addCells(fromPosition, cells);
   }
 
   @Override
-  public <T extends SimpleCell & Updatable> void addOrUpdateCell(T cell) {
+  public <T extends SimpleCell & Updatable> void addOrUpdateCell(@NonNull T cell) {
     adapter.addOrUpdateCell(cell);
   }
 
   @Override
-  public <T extends SimpleCell & Updatable> void addOrUpdateCells(List<T> cells) {
+  public <T extends SimpleCell & Updatable> void addOrUpdateCells(@NonNull List<T> cells) {
     adapter.addOrUpdateCells(cells);
   }
 
   @Override
-  public <T extends SimpleCell & Updatable> void addOrUpdateCells(T... cells) {
+  public <T extends SimpleCell & Updatable> void addOrUpdateCells(@NonNull T... cells) {
     adapter.addOrUpdateCells(cells);
   }
 
   @Override
-  public void removeCell(SimpleCell cell) {
+  public void removeCell(@NonNull SimpleCell cell) {
     adapter.removeCell(cell);
   }
 
@@ -777,12 +778,12 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   @Override
-  public void updateCell(int atPosition, Object payload) {
+  public void updateCell(int atPosition, @NonNull Object payload) {
     adapter.updateCell(atPosition, payload);
   }
 
   @Override
-  public void updateCells(int fromPosition, int toPosition, Object payloads) {
+  public void updateCells(int fromPosition, int toPosition, @NonNull Object payloads) {
     adapter.updateCells(fromPosition, toPosition, payloads);
   }
 

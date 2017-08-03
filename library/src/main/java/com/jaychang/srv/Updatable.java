@@ -1,9 +1,11 @@
 package com.jaychang.srv;
 
+import android.support.annotation.NonNull;
+
 public interface Updatable<T> {
 
-  boolean areContentsTheSame(T newItem);
+  boolean areContentsTheSame(@NonNull T newItem);
 
-  Object getChangePayload(T newItem);
+  Object getChangePayload(@NonNull T newItem);
 
 }

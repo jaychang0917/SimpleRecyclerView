@@ -1,5 +1,7 @@
 package com.jaychang.srv;
 
+import android.support.annotation.NonNull;
+
 public interface OnLoadMoreListener {
-  void onLoadMore(SimpleRecyclerView simpleRecyclerView);
+  void onLoadMore(@NonNull SimpleRecyclerView simpleRecyclerView);
 }

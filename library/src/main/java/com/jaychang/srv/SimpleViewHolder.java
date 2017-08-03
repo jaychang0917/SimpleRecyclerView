@@ -1,5 +1,6 @@
 package com.jaychang.srv;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -7,7 +8,7 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder {
 
   private SimpleCell cell;
 
-  public SimpleViewHolder(View itemView) {
+  public SimpleViewHolder(@NonNull View itemView) {
     super(itemView);
   }
 

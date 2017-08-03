@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 public interface SectionHeaderProvider<T> {
-  @NonNull View getSectionHeaderView(T item, int position);
-  boolean isSameSection(T item, T nextItem);
+  @NonNull View getSectionHeaderView(@NonNull T item, int position);
+  boolean isSameSection(@NonNull T item, @NonNull T nextItem);
   boolean isSticky();
-  int getSectionHeaderMarginTop(T item, int position);
+  int getSectionHeaderMarginTop(@NonNull T item, int position);
 }

@@ -1,5 +1,6 @@
 package com.jaychang.srv.behavior;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.jaychang.srv.SimpleRecyclerView;
@@ -10,16 +11,16 @@ public abstract class DragAndDropCallback<T> {
     return true;
   }
 
-  public void onCellDragStarted(SimpleRecyclerView simpleRecyclerView, View itemView, T item, int position) {
+  public void onCellDragStarted(@NonNull SimpleRecyclerView simpleRecyclerView, @NonNull View itemView, @NonNull T item, int position) {
   }
 
-  public void onCellMoved(SimpleRecyclerView simpleRecyclerView, View itemView, T item, int fromPosition, int toPosition) {
+  public void onCellMoved(@NonNull SimpleRecyclerView simpleRecyclerView, @NonNull View itemView, @NonNull T item, int fromPosition, int toPosition) {
   }
 
-  public void onCellDropped(SimpleRecyclerView simpleRecyclerView, View itemView, T item, int initialPosition, int toPosition) {
+  public void onCellDropped(@NonNull SimpleRecyclerView simpleRecyclerView, @NonNull View itemView, @NonNull T item, int initialPosition, int toPosition) {
   }
 
-  public void onCellDragCancelled(SimpleRecyclerView simpleRecyclerView, View itemView, T item, int currentPosition) {
+  public void onCellDragCancelled(@NonNull SimpleRecyclerView simpleRecyclerView, @NonNull View itemView, @NonNull T item, int currentPosition) {
   }
 
 }

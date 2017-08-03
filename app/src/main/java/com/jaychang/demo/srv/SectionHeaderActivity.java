@@ -13,7 +13,7 @@ import com.jaychang.demo.srv.model.Book;
 import com.jaychang.demo.srv.util.DataUtils;
 import com.jaychang.demo.srv.util.Utils;
 import com.jaychang.srv.SimpleRecyclerView;
-import com.jaychang.srv.decoration.SectionHeaderProviderAdapter;
+import com.jaychang.srv.decoration.SimpleSectionHeaderProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class SectionHeaderActivity extends BaseActivity {
   }
 
   private void init() {
-    recyclerView.setSectionHeader(new SectionHeaderProviderAdapter<Book>() {
+    recyclerView.setSectionHeader(new SimpleSectionHeaderProvider<Book>() {
       @NonNull
       @Override
       public View getSectionHeaderView(Book item, int position) {

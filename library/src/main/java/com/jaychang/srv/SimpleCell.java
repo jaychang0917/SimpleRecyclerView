@@ -39,7 +39,7 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
 
   @NonNull protected abstract VH onCreateViewHolder(@NonNull ViewGroup parent, @NonNull View cellView);
 
-  protected abstract void onBindViewHolder(@NonNull VH holder, int position, @NonNull Context context, @NonNull Object payload);
+  protected abstract void onBindViewHolder(@NonNull VH holder, int position, @NonNull Context context, @Nullable Object payload);
 
   protected void onUnbindViewHolder(@NonNull VH holder) {
   }

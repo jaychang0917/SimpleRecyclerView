@@ -1,5 +1,7 @@
 package com.jaychang.srv;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -37,7 +39,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   }
 
   @Override
-  public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public SimpleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     SimpleCell cell = cellTypeMap.get(viewType);
     View view = LayoutInflater.from(parent.getContext()).inflate(cell.getLayoutRes(), parent, false);
     final SimpleViewHolder viewHolder = cell.onCreateViewHolder(parent, view);
@@ -59,7 +61,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   }
 
   @Override
-  public void onBindViewHolder(final SimpleViewHolder holder, int position, List<Object> payloads) {
+  public void onBindViewHolder(@NonNull  final SimpleViewHolder holder, @NonNull int position, @Nullable List<Object> payloads) {
     final SimpleCell cell = cells.get(position);
 
     holder.bind(cell);
@@ -111,12 +113,12 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   }
 
   @Override
-  public void onBindViewHolder(SimpleViewHolder holder, int position) {
+  public void onBindViewHolder(@NonNull SimpleViewHolder holder, int position) {
     onBindViewHolder(holder, position, null);
   }
 
   @Override
-  public void onViewRecycled(SimpleViewHolder holder) {
+  public void onViewRecycled(@NonNull SimpleViewHolder holder) {
     holder.getCell().onUnbindViewHolder(holder);
     holder.unbind();
   }

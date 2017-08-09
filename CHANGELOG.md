@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.1.24 (2017-08-10)
+- Bug fix
+
 ### Version 1.1.20 (2017-08-03)
 - Add @NonNull annotation to avoid unnecessary unwrap in kotlin  
 - Rename SectionHeaderProviderAdapter to SimpleSectionHeaderProvider

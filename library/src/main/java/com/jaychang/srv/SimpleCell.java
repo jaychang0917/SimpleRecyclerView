@@ -3,7 +3,6 @@ package com.jaychang.srv;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -40,7 +39,7 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
 
   @NonNull protected abstract VH onCreateViewHolder(@NonNull ViewGroup parent, @NonNull View cellView);
 
-  protected abstract void onBindViewHolder(@NonNull VH holder, int position, @NonNull Context context, @Nullable Object payload);
+  protected abstract void onBindViewHolder(@NonNull VH holder, int position, @NonNull Context context, Object payload);
 
   protected void onUnbindViewHolder(@NonNull VH holder) {
   }

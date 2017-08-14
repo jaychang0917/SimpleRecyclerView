@@ -112,9 +112,6 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
 
   /**
    * The unique identifier of your data model.
-   * If you use updateCell() or addOrUpdateCell(), you must return a valid
-   * unique id. If you're not going to use those operations, you can simply
-   * return 0.
    * */
   @Override
   protected long getItemId() {

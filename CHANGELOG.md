@@ -7,8 +7,8 @@
 - Bug fix
 
 ### Version 1.1.20 (2017-08-03)
-- Add @NonNull annotation to avoid unnecessary unwrap in kotlin  
-- Rename SectionHeaderProviderAdapter to SimpleSectionHeaderProvider
+- Add `@NonNull` annotation to avoid unnecessary unwrap in kotlin  
+- Rename `SectionHeaderProviderAdapter` to `SimpleSectionHeaderProvider`
 
 ### Version 1.1.19 (2017-08-02)
 - Fix attribute autocomplete not showing issue

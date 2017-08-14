@@ -41,11 +41,6 @@ public class BookAdCell extends SimpleCell<Ad, BookAdCell.ViewHolder> {
   protected void onUnbindViewHolder(ViewHolder holder) {
   }
 
-  @Override
-  protected long getItemId() {
-    return getItem().getId();
-  }
-
   static class ViewHolder extends SimpleViewHolder {
     @BindView(R.id.textView)
     TextView textView;

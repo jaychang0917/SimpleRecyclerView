@@ -80,11 +80,6 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
     // do your cleaning jobs here when the item view is recycled.
   }
 
-  @Override
-  protected long getItemId() {
-    return getItem().getId();
-  }
-
   public void setShowHandle(boolean showHandle) {
     this.showHandle = showHandle;
   }

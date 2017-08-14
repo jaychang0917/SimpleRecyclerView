@@ -35,11 +35,6 @@ public class NumberCell extends SimpleCell<Integer, NumberCell.ViewHolder> {
     holder.textView.setText(String.valueOf(getItem()));
   }
 
-  @Override
-  protected long getItemId() {
-    return getItem();
-  }
-
   static class ViewHolder extends SimpleViewHolder {
     @BindView(R.id.textView)
     TextView textView;

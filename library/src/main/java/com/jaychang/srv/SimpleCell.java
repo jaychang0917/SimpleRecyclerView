@@ -52,7 +52,9 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
     this.item = item;
   }
 
-  protected abstract long getItemId();
+  protected long getItemId() {
+    return item.hashCode();
+  }
 
   public int getSpanSize() {
     return spanSize;

@@ -111,14 +111,6 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
   }
 
   /**
-   * The unique identifier of your data model.
-   * */
-  @Override
-  protected long getItemId() {
-    return getItem().getId();
-  }
-
-  /**
    * Define your view holder, which must extend SimpleViewHolder.
    * */
   static class ViewHolder extends SimpleViewHolder {

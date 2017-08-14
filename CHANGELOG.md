@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.1.25 (2017-08-10)
+- `SimpleCell.getItemId()` has default implementation
+
 ### Version 1.1.24 (2017-08-10)
 - Bug fix
 

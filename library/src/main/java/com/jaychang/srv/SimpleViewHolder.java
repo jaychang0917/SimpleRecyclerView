@@ -4,7 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public class SimpleViewHolder extends RecyclerView.ViewHolder {
+import org.jetbrains.annotations.Nullable;
+
+import kotlinx.android.extensions.LayoutContainer;
+
+public class SimpleViewHolder extends RecyclerView.ViewHolder implements LayoutContainer {
 
   private SimpleCell cell;
 
@@ -22,6 +26,12 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder {
 
   SimpleCell getCell() {
     return cell;
+  }
+
+  @Nullable
+  @Override
+  public View getContainerView() {
+    return itemView;
   }
 
 }

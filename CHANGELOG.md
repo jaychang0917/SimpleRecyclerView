@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.2.0 (2017-08-10)
+- `SimpleViewHolder` implements `LayoutContainer` to support view cache feature added in kotlin `1.1.4`
+
 ### Version 1.1.25 (2017-08-10)
 - `SimpleCell.getItemId()` has default implementation
 

@@ -85,25 +85,6 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
       });
     }
 
-    if (cell.getOnCellClickListener2() != null) {
-      holder.itemView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          cell.getOnCellClickListener2().onCellClicked(cell, holder, cell.getItem());
-        }
-      });
-    }
-
-    if (cell.getOnCellLongClickListener2() != null) {
-      holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View v) {
-          cell.getOnCellLongClickListener2().onCellLongClicked(cell, holder, cell.getItem());
-          return true;
-        }
-      });
-    }
-
     Object payload = null;
     if (payloads != null && payloads.size() > 0) {
       payload = payloads.get(0);

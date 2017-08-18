@@ -1,6 +1,7 @@
 package com.jaychang.demo.srv;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.jaychang.demo.srv.cell.BookCell;
@@ -79,15 +80,15 @@ public class BasicUsageActivity extends BaseActivity {
     for (Book book : books) {
       BookCell cell = new BookCell(book);
       // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
-      cell.setOnCellClickListener2(new SimpleCell.OnCellClickListener2<BookCell, BookCell.ViewHolder, Book>() {
+      cell.setOnCellClickListener(new SimpleCell.OnCellClickListener<Book>() {
         @Override
-        public void onCellClicked(BookCell bookCell, BookCell.ViewHolder viewHolder, Book item) {
+        public void onCellClicked(@NonNull Book item) {
           ToastUtils.show(BasicUsageActivity.this, "click: " + item);
         }
       });
-      cell.setOnCellLongClickListener2(new SimpleCell.OnCellLongClickListener2<BookCell, BookCell.ViewHolder, Book>() {
+      cell.setOnCellLongClickListener(new SimpleCell.OnCellLongClickListener<Book>() {
         @Override
-        public void onCellLongClicked(BookCell bookCell, BookCell.ViewHolder viewHolder, Book item) {
+        public void onCellLongClicked(@NonNull Book item) {
           ToastUtils.show(BasicUsageActivity.this, "long click: " + item);
         }
       });

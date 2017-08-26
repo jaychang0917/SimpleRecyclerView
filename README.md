@@ -343,7 +343,7 @@ simpleRecyclerView.setLoadMoreToTop(true);
 ```
 
 ## <a name=drag_drop>Drag & Drop</a>
-You can enable drag and drop by providing a [`DragAndDropCallback<T>`][4] to `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
+You can enable drag and drop by providing a [`DragAndDropCallback<T>`][4] for `enableDragAndDrop(callback)` or `enableDragAndDrop(dragHandleResId, callback)`, the latter one accepts a drag handle view resource id, only pressing this view will trigger drag behavior. Default long press to trigger drag behavior. Also, all callback methods of `DragAndDropCallback<T>` are optional.
 ```java
 DragAndDropCallback<Book> dragAndDropCallback = new DragAndDropCallback<Book>() {
   // Optional, return false if you manipulate custom drag effect in the rest of callbacks.

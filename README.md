@@ -326,11 +326,8 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
     loadBooks();
   }
 });
-
-recyclerView.setLoadingMore(true);
-loadData()
-recyclerView.setLoadingMore(false);
 ```
+
 #### <a name=load_more_view>Load more view</a>
 ```xml
 <com.jaychang.srv.SimpleRecyclerView
@@ -344,6 +341,12 @@ recyclerView.setLoadingMore(false);
 If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
 ```java
 simpleRecyclerView.setLoadMoreToTop(true);
+```
+
+```java
+recyclerView.setLoadingMore(true);
+loadData()
+recyclerView.setLoadingMore(false);
 ```
 
 ## <a name=drag_drop>Drag & Drop</a>

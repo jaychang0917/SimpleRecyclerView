@@ -344,9 +344,9 @@ simpleRecyclerView.setLoadMoreToTop(true);
 ```
 
 ```java
-recyclerView.setLoadingMore(true);
+simpleRecyclerView.setLoadingMore(true);
 loadData()
-recyclerView.setLoadingMore(false);
+simpleRecyclerView.setLoadingMore(false);
 ```
 
 ## <a name=drag_drop>Drag & Drop</a>

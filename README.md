@@ -326,6 +326,10 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
     loadBooks();
   }
 });
+
+recyclerView.setLoadingMore(true);
+loadData()
+recyclerView.setLoadingMore(false);
 ```
 #### <a name=load_more_view>Load more view</a>
 ```xml

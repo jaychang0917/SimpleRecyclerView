@@ -1,5 +1,11 @@
 ## Change Log
 
+### Version 1.2.1 (2017-09-06)
+- Fix empty cell not being shown after call `removeAllCells()`
+
+### Version 1.2.1 (2017-08-18)
+- Remove `OnCellClickListener2` and `OnCellLongClickListener2`
+
 ### Version 1.2.0 (2017-08-16)
 - `SimpleViewHolder` implements `LayoutContainer` to support view cache feature added in kotlin `1.1.4`
 

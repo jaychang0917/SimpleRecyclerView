@@ -46,15 +46,18 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
 
     if (dragAndDropHelper != null && dragAndDropHelper.getDragHandleId() != 0) {
       View dragHandle = viewHolder.itemView.findViewById(dragAndDropHelper.getDragHandleId());
-      dragHandle.setOnTouchListener(new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-          if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-            dragAndDropHelper.onStartDrag(viewHolder);
+
+      if(dragHandle != null) {
+        dragHandle.setOnTouchListener(new View.OnTouchListener() {
+          @Override
+          public boolean onTouch(View v, MotionEvent event) {
+            if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+              dragAndDropHelper.onStartDrag(viewHolder);
+            }
+            return false;
           }
-          return false;
-        }
-      });
+        });
+      }
     }
 
     return viewHolder;

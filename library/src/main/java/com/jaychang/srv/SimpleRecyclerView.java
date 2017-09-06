@@ -810,6 +810,7 @@ public class SimpleRecyclerView extends RecyclerView
   // remove all cells and indicates that data is refreshing, so the empty view will not be shown.
   public void removeAllCells(boolean showEmptyStateView) {
     this.isRefreshing = !showEmptyStateView;
+    this.isEmptyViewShown = false;
     adapter.removeAllCells();
   }
 

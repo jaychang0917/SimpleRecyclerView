@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.2.3 (2017-09-06)
+- Update to `com.android.support:recyclerview-v7:26.0.2`
+
 ### Version 1.2.2 (2017-09-06)
 - Fix empty cell not being shown after call `removeAllCells()`
 

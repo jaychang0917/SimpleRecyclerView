@@ -1,7 +1,7 @@
 ## Change Log
 
 ### Version 1.2.6 (2017-09-16)
-- Fix #31
+- Fix [Issue#31](https://github.com/jaychang0917/SimpleRecyclerView/issues/31)
 
 ### Version 1.2.3 (2017-09-09)
 - Update to `com.android.support:recyclerview-v7:26.0.2`

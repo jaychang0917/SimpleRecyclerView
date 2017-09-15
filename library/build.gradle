@@ -26,5 +26,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:recyclerview-v7:26.0.2'
-    compile 'org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.1.4-3'
+    compile ("org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.1.4-3") {
+        transitive = false
+    }
 }

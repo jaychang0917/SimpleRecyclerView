@@ -7,7 +7,8 @@ A RecyclerView extension for building list more easily.
 ## [Screenshot](https://github.com/jaychang0917/SimpleRecyclerView/blob/master/art/screenshot.md)
 
 ## Table of Contents
-- [Basic Usage](#basic_usage) 
+- [Basic Usage](#basic_usage)
+ -[Kotlin android extension support](#kotlin_support) 
 - [Multiple Types](#multi_types)
 - [Cell Operations](#cell_ops) 
 - [Divider](#divider)
@@ -124,6 +125,11 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
   }
 
 }
+```
+##### <a name=kotlin_support>Kotlin android extension support</a>
+If you are using Kotlin android extension, just one line of code for creating your ViewHolder
+```kotlin
+class ViewHolder(itemView: View) extends SimpleViewHolder(itemView)
 ```
 #### 3. Create cell(s) and add them to the SimpleRecyclerView
 ```java

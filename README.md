@@ -129,7 +129,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
 ##### <a name=kotlin_support>Kotlin android extension support</a>
 If you are using Kotlin android extension, just one line of code for creating your ViewHolder
 ```kotlin
-class ViewHolder(itemView: View) extends SimpleViewHolder(itemView)
+class ViewHolder(itemView: View) : SimpleViewHolder(itemView)
 ```
 #### 3. Create cell(s) and add them to the SimpleRecyclerView
 ```java

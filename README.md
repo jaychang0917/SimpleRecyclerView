@@ -99,7 +99,7 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
   }
 
   @Override
-  protected void onBindViewHolder(ViewHolder holder, int position, Context context, List<Object> payloads) {
+  protected void onBindViewHolder(ViewHolder holder, int position, Context context, Object payload) {
     holder.textView.setText(getItem().getTitle());
   }
   
@@ -115,12 +115,11 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
    * Define your view holder, which must extend SimpleViewHolder.
    * */
   static class ViewHolder extends SimpleViewHolder {
-    @BindView(R.id.textView)
     TextView textView;
 
     ViewHolder(View itemView) {
       super(itemView);
-      ButterKnife.bind(this, itemView);
+      textView = itemView.findViewById(R.id.textView);
     }
   }
 

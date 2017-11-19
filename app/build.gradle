@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "25.0.3"
+    compileSdkVersion deps.build.compileSdkVersion
+    buildToolsVersion deps.build.buildToolsVersion
     defaultConfig {
         applicationId "com.jaychang.demo.srv"
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion deps.build.minSdkVersion
+        targetSdkVersion deps.build.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -21,8 +21,8 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':library')
-    compile 'com.android.support:appcompat-v7:26.0.2'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.wang.avi:library:2.1.3'
+    compile deps.support.appcompat
+    compile deps.butterKnife.core
+    annotationProcessor deps.butterKnife.compiler
+    compile deps.avi
 }

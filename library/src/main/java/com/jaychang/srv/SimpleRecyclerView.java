@@ -590,19 +590,9 @@ public class SimpleRecyclerView extends RecyclerView
     }
 
     if (isLoadMoreToTop) {
-      post(new Runnable() {
-        @Override
-        public void run() {
-          addCell(0, loadMoreViewCell);
-        }
-      });
+      addCell(0, loadMoreViewCell);
     } else {
-      post(new Runnable() {
-        @Override
-        public void run() {
-          addCell(loadMoreViewCell);
-        }
-      });
+      addCell(loadMoreViewCell);
     }
 
     isLoadMoreViewShown = true;

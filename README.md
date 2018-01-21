@@ -324,12 +324,17 @@ simpleRecyclerView.setSectionHeader(sectionHeaderProvider);
 ## <a name=auto_load_more>Auto Load More</a>
 #### <a name=load_more_threshold>Load more threshold</a>
 ```java
-// if the total beneath hidden cells count <= 4, onLoadMore() will be called. Default threshold is 0.
+// if the total beneath hidden cells count <= 4 and shouldLoadMore() is true, onLoadMore() will be called. Default threshold is 0.
 simpleRecyclerView.setAutoLoadMoreThreshold(4);
 
 simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
   @Override
-  public void onLoadMore(SimpleRecyclerView simpleRecyclerView) {
+  public boolean shouldLoadMore() {
+    return hasMoreData;
+  }
+  
+  @Override
+  public void onLoadMore() {
     loadBooks();
   }
 });

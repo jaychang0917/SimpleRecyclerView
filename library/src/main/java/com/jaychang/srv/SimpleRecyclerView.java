@@ -579,7 +579,7 @@ public class SimpleRecyclerView extends RecyclerView
     loadMoreViewCell.setSpanSize(gridSpanCount);
   }
 
-  public void setLoadingMore(boolean isLoadingMore) {
+  private void setLoadingMore(boolean isLoadingMore) {
     if (isLoadingMore) {
       showLoadMoreView();
     } else {

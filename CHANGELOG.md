@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.2.8 (2018-01-21)
+- Handle load more state automatically. No need to call `setLoadingMore()` manually, and the method is demoted to a private method now.
+
 ### Version 1.2.7 (2017-12-09)
 - Fix [Issue#34](https://github.com/jaychang0917/SimpleRecyclerView/issues/34)
 

@@ -80,6 +80,7 @@ public class SimpleRecyclerView extends RecyclerView
     @Override
     public void onItemRangeInserted(int positionStart, int itemCount) {
       updateEmptyStateViewVisibility();
+      setLoadingMore(false);
     }
 
     @Override
@@ -274,7 +275,10 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void handleLoadMore() {
-    onLoadMoreListener.onLoadMore(this);
+    if (onLoadMoreListener.shouldLoadMore()) {
+      setLoadingMore(true);
+      onLoadMoreListener.onLoadMore();
+    }
   }
 
   private int getFirstVisibleItemPosition() {

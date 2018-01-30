@@ -816,6 +816,31 @@ public class SimpleRecyclerView extends RecyclerView
     return isEmptyViewShown ? 0 : adapter.getItemCount();
   }
 
+  public void smoothScrollToPosition(int position, ScrollPosition scrollPosition, boolean skipSpacing) {
+    SimpleLinearSmoothScroller scroller = new SimpleLinearSmoothScroller(getContext(), skipSpacing);
+    if (getLayoutManager().canScrollVertically()) {
+      scroller.setVerticalScrollPosition(scrollPosition);
+    } else if (getLayoutManager().canScrollHorizontally()) {
+      scroller.setHorizontalScrollPosition(scrollPosition);
+    }
+    scroller.setTargetPosition(position);
+    getLayoutManager().startSmoothScroll(scroller);
+  }
+
+  public void smoothScrollToPosition(int position, ScrollPosition scrollPosition) {
+    smoothScrollToPosition(position, scrollPosition, false);
+  }
+
+  public void scrollToPosition(int position) {
+    if (!(getLayoutManager() instanceof LinearLayoutManager)) {
+      return;
+    }
+
+    LinearLayoutManager layoutManager = ((LinearLayoutManager) getLayoutManager());
+    int padding = layoutManager.getOrientation() == HORIZONTAL ? layoutManager.getPaddingLeft() : layoutManager.getPaddingTop();
+      layoutManager.scrollToPositionWithOffset(position, 12);
+  }
+
   /**
    * common
    */

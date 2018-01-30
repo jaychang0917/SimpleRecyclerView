@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.jaychang.demo.srv.cell.BookCell;
 import com.jaychang.demo.srv.model.Book;
 import com.jaychang.demo.srv.util.DataUtils;
+import com.jaychang.srv.ScrollPosition;
 import com.jaychang.srv.SimpleRecyclerView;
 
 import java.util.ArrayList;
@@ -29,10 +30,13 @@ public class CellOperationsActivity extends BaseActivity {
 
   @OnClick(R.id.addButton)
   void add() {
-    int itemCount = recyclerView.getItemCount();
-    Book book = DataUtils.newBook(itemCount);
-    BookCell cell = new BookCell(book);
-    recyclerView.addCell(cell);
+//    int itemCount = recyclerView.getItemCount();
+//    Book book = DataUtils.newBook(itemCount);
+//    BookCell cell = new BookCell(book);
+//    recyclerView.addCell(cell);
+
+    recyclerView.smoothScrollToPosition(5, ScrollPosition.BOTTOM, false);
+//    recyclerView.scrollToPosition(2);
   }
 
   @OnClick(R.id.addOrUpdateButton)
@@ -73,7 +77,7 @@ public class CellOperationsActivity extends BaseActivity {
   }
 
   private void bindBooks() {
-    List<Book> books = DataUtils.getBooks(3);
+    List<Book> books = DataUtils.getAllBooks();
     List<BookCell> cells = new ArrayList<>();
 
     for (Book book : books) {

@@ -1,14 +1,14 @@
 def versions = [
     kotlin : '1.1.60',
-    support: '26.1.0',
+    support: '27.0.2',
     butterknife: '8.7.0'
 ]
 
 def build = [
-    buildToolsVersion: '26.0.2',
-    compileSdkVersion: 26,
+    buildToolsVersion: '27.0.3',
+    compileSdkVersion: 27,
     minSdkVersion: 14,
-    targetSdkVersion: 26,
+    targetSdkVersion: 27,
 
     gradlePlugins: [
         android: 'com.android.tools.build:gradle:3.0.0',

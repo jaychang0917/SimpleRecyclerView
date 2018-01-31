@@ -831,6 +831,11 @@ public class SimpleRecyclerView extends RecyclerView
     smoothScrollToPosition(position, scrollPosition, false);
   }
 
+  @Override
+  public void smoothScrollToPosition(int position) {
+    smoothScrollToPosition(position, ScrollPosition.TOP, false);
+  }
+
   public void scrollToPosition(int position) {
     if (!(getLayoutManager() instanceof LinearLayoutManager)) {
       return;

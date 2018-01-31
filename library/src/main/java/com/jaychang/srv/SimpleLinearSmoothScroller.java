@@ -40,18 +40,14 @@ class SimpleLinearSmoothScroller extends LinearSmoothScroller {
       return 0;
     }
     RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) view.getLayoutParams();
-    int top = verticalScrollPosition == ScrollPosition.TOP ?
-      (layoutManager.getDecoratedTop(view) +
-      (skipSpacing ? layoutManager.getTopDecorationHeight(view) : 0) +
-      layoutManager.getPaddingTop() -
-      params.topMargin) :
-      layoutManager.getDecoratedTop(view) - params.topMargin;
-    int bottom = verticalScrollPosition == ScrollPosition.BOTTOM ?
-      (layoutManager.getDecoratedBottom(view) -
-      (skipSpacing ? layoutManager.getBottomDecorationHeight(view) : 0) -
-      layoutManager.getPaddingBottom() +
-      params.bottomMargin) :
-      layoutManager.getDecoratedBottom(view) + params.bottomMargin;
+    int top = (layoutManager.getDecoratedTop(view) +
+        (skipSpacing ? layoutManager.getTopDecorationHeight(view) : 0) +
+        layoutManager.getPaddingTop() -
+        params.topMargin);
+    int bottom = (layoutManager.getDecoratedBottom(view) -
+        (skipSpacing ? layoutManager.getTopDecorationHeight(view) : -layoutManager.getTopDecorationHeight(view)) -
+        layoutManager.getPaddingBottom() +
+        params.bottomMargin);
     int start = layoutManager.getPaddingTop();
     int end = layoutManager.getHeight() - layoutManager.getPaddingBottom();
     return calculateDtToFit(top, bottom, start, end, snapPreference);
@@ -69,7 +65,7 @@ class SimpleLinearSmoothScroller extends LinearSmoothScroller {
       layoutManager.getPaddingLeft() -
       params.leftMargin;
     int right = layoutManager.getDecoratedRight(view) -
-      (skipSpacing ? layoutManager.getRightDecorationWidth(view) : -layoutManager.getRightDecorationWidth(view)) -
+      (skipSpacing ? layoutManager.getLeftDecorationWidth(view) : -layoutManager.getLeftDecorationWidth(view)) -
       layoutManager.getPaddingRight() +
       params.rightMargin;
     int start = layoutManager.getPaddingLeft();

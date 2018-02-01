@@ -54,19 +54,19 @@ public abstract class SimpleCell<T, VH extends SimpleViewHolder> {
     this.spanSize = spanSize;
   }
 
-  public void setOnCellClickListener(@NonNull OnCellClickListener onCellClickListener) {
+  public void setOnCellClickListener(@NonNull OnCellClickListener<T> onCellClickListener) {
     this.onCellClickListener = onCellClickListener;
   }
 
-  public void setOnCellLongClickListener(@NonNull OnCellLongClickListener onCellLongClickListener) {
+  public void setOnCellLongClickListener(@NonNull OnCellLongClickListener<T> onCellLongClickListener) {
     this.onCellLongClickListener = onCellLongClickListener;
   }
 
-  public OnCellClickListener getOnCellClickListener() {
+  public OnCellClickListener<T> getOnCellClickListener() {
     return onCellClickListener;
   }
 
-  public OnCellLongClickListener getOnCellLongClickListener() {
+  public OnCellLongClickListener<T> getOnCellLongClickListener() {
     return onCellLongClickListener;
   }
 

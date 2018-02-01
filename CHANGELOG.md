@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.2.9 (2018-02-01)
+- Update `SimpleCell.setOnCellClickListener` and `SimpleCell.setOnCellLongClickListener` signature.
+
 ### Version 1.2.8 (2018-01-21)
 - Handle load more state automatically. No need to call `setLoadingMore()` manually, and the method is demoted to a private method now.
 - Add `OnLoadMoreListener.shouldLoadMore()`.

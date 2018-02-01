@@ -139,7 +139,7 @@ List<BookCell> cells = new ArrayList<>();
 
 for (Book book : books) {
   BookCell cell = new BookCell(book);
-  // There are two default cell listeners: OnCellClickListener<CELL, VH, T> and OnCellLongClickListener<CELL, VH, T>
+  // There are two default cell listeners: OnCellClickListener<T> and OnCellLongClickListener<T>
   cell.setOnCellClickListener(new SimpleCell.OnCellClickListener<Book>() {
     @Override
     public void onCellClicked(Book item) {

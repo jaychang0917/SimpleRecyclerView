@@ -287,9 +287,9 @@ The empty state view will be shown automatically when there is no data. If you w
 ```
 
 ## <a name=section_header>Section Header</a>
-You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SectionHeaderProviderAdapter<T>`][3] is also provided. 
+You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SimpleSectionHeaderProvider<T>`][3] is also provided. 
 ```java
-SectionHeaderProvider<Book> sectionHeaderProvider = new SectionHeaderProviderAdapter<Book>() {
+SectionHeaderProvider<Book> sectionHeaderProvider = new SimpleSectionHeaderProvider<Book>() {
   // Your section header view here
   @NonNull
   @Override
@@ -503,7 +503,7 @@ simpleRecyclerView.enableSwipeToDismiss(swipeToDismissCallback, LEFT, RIGHT);
 
 [1]: https://goo.gl/AB43P4
 [2]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SectionHeaderProvider.java
-[3]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SectionHeaderProviderAdapter.java
+[3]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/decoration/SimpleSectionHeaderProvider.java
 [4]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/DragAndDropCallback.java
 [5]: https://github.com/jaychang0917/SimpleRecyclerView/blob/master/library/src/main/java/com/jaychang/srv/behavior/SwipeToDismissCallback.java
 

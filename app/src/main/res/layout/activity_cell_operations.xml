@@ -66,7 +66,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="4dp"
+        android:padding="4dp"
         android:clipToPadding="false"
         app:srv_layoutMode="linearVertical"
         app:srv_spacing="4dp" />

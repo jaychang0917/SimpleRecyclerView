@@ -111,7 +111,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
 
   @Override
   public int getItemViewType(int position) {
-    return cells.get(position).getLayoutRes();
+    return getItemViewType(cells.get(position));
+  }
+
+  private int getItemViewType(SimpleCell cell) {
+    return cell.getClass().getName().hashCode();
   }
 
   @Override
@@ -121,7 +125,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
 
   private void addCellType(SimpleCell cell) {
     if (!isCellTypeAdded(cell)) {
-      cellTypeMap.put(cell.getLayoutRes(), cell);
+      cellTypeMap.put(getItemViewType(cell), cell);
     }
   }
 
@@ -141,12 +145,12 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
     }
 
     if (isCellTypeAdded(cell) && !hasCellType) {
-      cellTypeMap.remove(cell.getLayoutRes());
+      cellTypeMap.remove(getItemViewType(cell));
     }
   }
 
   private boolean isCellTypeAdded(SimpleCell cell) {
-    return cellTypeMap.indexOfKey(cell.getLayoutRes()) >= 0;
+    return cellTypeMap.indexOfKey(getItemViewType(cell)) >= 0;
   }
 
   @Override

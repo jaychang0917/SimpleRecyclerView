@@ -84,6 +84,11 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder>
     this.showHandle = showHandle;
   }
 
+  @Override
+  protected long getItemId() {
+    return getItem().getId();
+  }
+
   /**
    * If the titles of books are same, no need to update the cell, onBindViewHolder() will not be called.
    */

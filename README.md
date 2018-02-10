@@ -8,7 +8,7 @@ A RecyclerView extension for building list more easily.
 
 ## Table of Contents
 * [Basic Usage](#basic_usage)
-  * [Kotlin android extension support](#kotlin_support)   
+  * [Kotlin android extensions support](#kotlin_support)   
 * [Multiple Types](#multi_types)
 * [Cell Operations](#cell_ops) 
 * [Divider](#divider)
@@ -117,8 +117,8 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
 
 }
 ```
-##### <a name=kotlin_support>Kotlin android extension support</a>
-If you are using Kotlin android extension, the cell can be simplified as following:
+##### <a name=kotlin_support>Kotlin android extensions support</a>
+If you are using Kotlin android extensions, the cell can be simplified as following:
 ```kotlin
 class BookCell(item: Book) : SimpleCell<Book>(item) {
   override fun getLayoutRes(): Int {

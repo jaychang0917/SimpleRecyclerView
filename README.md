@@ -1,5 +1,5 @@
 # SimpleRecyclerView
-[![Release](https://jitpack.io/v/jaychang0917/SimpleRecyclerView.svg)](https://jitpack.io/#jaychang0917/SimpleRecyclerView)
+[![Download](https://api.bintray.com/packages/jaychang0917/maven/simplerecyclerview/images/download.svg) ](https://bintray.com/jaychang0917/maven/simplerecyclerview/_latestVersion)
 [![Android Weekly](http://img.shields.io/badge/Android%20Weekly-%23243-2CB3E5.svg)](http://androidweekly.net/issues/issue-243)
 
 A RecyclerView extension for building list more easily.
@@ -34,26 +34,16 @@ A RecyclerView extension for building list more easily.
 </a>
 
 ## Installation
-In your project level build.gradle :
-
-```java
-allprojects {
-    repositories {
-        ...
-        maven { url "https://jitpack.io" }
-    }
-}
-```
-
 In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.github.jaychang0917:SimpleRecyclerView:{latest_version}'
+    compile 'com.jaychang:simplerecyclerview:{latest_version}'
+    // for kotlin android extensions
+    compile 'com.jaychang:simplerecyclerview-kotlin-android-extensions:{latest_version}'
 }
 ```
-[![Release](https://jitpack.io/v/jaychang0917/SimpleRecyclerView.svg)](https://jitpack.io/#jaychang0917/SimpleRecyclerView)
-
+[![Download](https://api.bintray.com/packages/jaychang0917/maven/simplerecyclerview/images/download.svg) ](https://bintray.com/jaychang0917/maven/simplerecyclerview/_latestVersion)
 ---
 
 ## <a name=basic_usage>Basic Usage</a>
@@ -71,7 +61,7 @@ Basically, there are three steps to build your list.
     app:srv_gridSpanSequence="integer string (e.g. 2233)"
     ... />
 ```
-#### 2. Define the cell by extending `SimpleCell<T,VH>`
+#### 2. Define the cell by extending `SimpleCell<T, VH>`
 ```java
 /**
  * Accept two type arguments,
@@ -128,9 +118,17 @@ public class BookCell extends SimpleCell<Book, BookCell.ViewHolder> {
 }
 ```
 ##### <a name=kotlin_support>Kotlin android extension support</a>
-If you are using Kotlin android extension, just one line of code for creating your ViewHolder
+If you are using Kotlin android extension, the cell can be simplified as following:
 ```kotlin
-class ViewHolder(itemView: View) : SimpleViewHolder(itemView)
+class BookCell(item: Book) : SimpleCell<Book>(item) {
+  override fun getLayoutRes(): Int {
+    return R.layout.cell_book
+  }
+
+  override fun onBindViewHolder(holder: SimpleViewHolder, position: Int, context: Context, payload: Any) {
+    holder.textView.text = item.title
+  }
+}
 ```
 #### 3. Create cell(s) and add them to the SimpleRecyclerView
 ```java
@@ -353,12 +351,6 @@ simpleRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
 If you are going to build a list like chatting, i.e. the cells are added to top of the list, you should set `setLoadMoreToTop(true)`. This instructs the SimpleRecyclerView to check threshold for the top hidden cells.
 ```java
 simpleRecyclerView.setLoadMoreToTop(true);
-```
-
-```java
-simpleRecyclerView.setLoadingMore(true);
-loadData()
-simpleRecyclerView.setLoadingMore(false);
 ```
 
 ## <a name=drag_drop>Drag & Drop</a>

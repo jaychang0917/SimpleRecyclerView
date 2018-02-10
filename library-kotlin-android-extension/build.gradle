@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.novoda.bintray-release'
 
 buildscript {
@@ -6,8 +8,13 @@ buildscript {
         jcenter()
     }
     dependencies {
+        classpath deps.build.gradlePlugins.kotlin
         classpath deps.build.gradlePlugins.bintray
     }
+}
+
+androidExtensions {
+    experimental = true
 }
 
 android {
@@ -30,7 +37,8 @@ android {
 }
 
 dependencies {
-    compile deps.support.recyclerview
+    compileOnly project(':library')
+    compile deps.kotlin.stdlib
 }
 
 publish {

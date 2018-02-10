@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 1.3.0 (2018-02-10)
+- Add `SimpleRecyclerView.smoothScrollToPosition()` and `SimpleRecyclerView.scrollToPosition()`
+
 ### Version 1.2.9 (2018-02-01)
 - Update `SimpleCell.setOnCellClickListener` and `SimpleCell.setOnCellLongClickListener` signature.
 

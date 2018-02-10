@@ -1,1 +1,1 @@
-include ':app', ':library', ':library-kotlin-android-extension'
+include ':app', ':library', ':library-kotlin-android-extensions'

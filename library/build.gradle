@@ -34,8 +34,9 @@ dependencies {
 }
 
 publish {
+    userOrg = 'jaychang0917'
     groupId = 'com.jaychang'
-    artifactId = 'recyclerview'
+    artifactId = 'simplerecyclerview'
     publishVersion = '2.0.0'
     desc = 'A RecyclerView extension for building list more easily.'
     website = 'https://github.com/jaychang0917/SimpleRecyclerView'

@@ -1,5 +1,5 @@
 def versions = [
-    kotlin : '1.1.60',
+    kotlin : '1.2.21',
     support: '27.0.2',
     butterknife: '8.7.0'
 ]
@@ -11,7 +11,7 @@ def build = [
     targetSdkVersion: 27,
 
     gradlePlugins: [
-        android: 'com.android.tools.build:gradle:3.0.0',
+        android: 'com.android.tools.build:gradle:3.0.1',
         kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
         github: 'com.github.dcendents:android-maven-gradle-plugin:1.5',
         bintray: 'com.novoda:bintray-release:0.8.0'

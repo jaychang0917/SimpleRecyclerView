@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    compile deps.support.recyclerview
+    api deps.support.recyclerview
 }
 
 publish {

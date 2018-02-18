@@ -38,7 +38,7 @@ android {
 
 dependencies {
     compileOnly project(':library')
-    compile deps.kotlin.stdlib
+    api deps.kotlin.stdlib
 }
 
 publish {

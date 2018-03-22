@@ -817,6 +817,10 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   public void smoothScrollToPosition(int position, ScrollPosition scrollPosition, boolean skipSpacing) {
+    if (position < 0 || position >= getAllCells().size()) {
+      return;
+    }
+
     SimpleLinearSmoothScroller scroller = new SimpleLinearSmoothScroller(getContext(), skipSpacing);
     if (getLayoutManager().canScrollVertically()) {
       scroller.setVerticalScrollPosition(scrollPosition);
@@ -837,6 +841,10 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   public void scrollToPosition(int position, ScrollPosition scrollPosition, boolean skipSpacing) {
+    if (position < 0 || position >= getAllCells().size()) {
+      return;
+    }
+    
     if (!(getLayoutManager() instanceof LinearLayoutManager)) {
       return;
     }

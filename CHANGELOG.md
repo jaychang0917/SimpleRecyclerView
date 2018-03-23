@@ -1,7 +1,10 @@
 ## Change Log
 
+### Version 2.0.1 (2018-03-22)
+- Check validity of target scroll position.
+
 ### Version 2.0.0 (2018-02-11)
-- Speparate kotlin android extensions module
+- Speparate kotlin android extensions module.
 
 ### Version 1.3.0 (2018-02-10)
 - Add `SimpleRecyclerView.smoothScrollToPosition()` and `SimpleRecyclerView.scrollToPosition()`

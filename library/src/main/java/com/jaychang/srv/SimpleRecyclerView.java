@@ -243,7 +243,8 @@ public class SimpleRecyclerView extends RecyclerView
   }
 
   private void checkLoadMoreThreshold() {
-    if (isEmptyViewShown || isLoadingMore) {
+    // check isEmpty() to prevent the case: removeAllCells triggers this call
+    if (isEmptyViewShown || isLoadingMore || isEmpty()) {
       return;
     }
 

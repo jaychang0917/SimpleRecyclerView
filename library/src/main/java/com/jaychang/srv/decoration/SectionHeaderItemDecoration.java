@@ -163,7 +163,7 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
 
   private View getAndMeasureSectionHeader(RecyclerView parent, int position) {
     View sectionHeader = provider.getSectionHeaderView(getItem(position), position);
-    int widthSpec = View.MeasureSpec.makeMeasureSpec(parent.getWidth(), View.MeasureSpec.AT_MOST);
+    int widthSpec = View.MeasureSpec.makeMeasureSpec(parent.getWidth(), View.MeasureSpec.EXACTLY);
     int heightSpec = View.MeasureSpec.makeMeasureSpec(parent.getHeight(), View.MeasureSpec.AT_MOST);
     sectionHeader.measure(widthSpec, heightSpec);
     return sectionHeader;

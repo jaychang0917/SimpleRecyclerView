@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 2.0.3 (2018-05-16)
+- Fix wrong section header measurement.
+
 ### Version 2.0.2 (2018-04-12)
 - Fix: `removeAllCells()` should not trigger load more callback.
 

@@ -80,7 +80,6 @@ public class SimpleRecyclerView extends RecyclerView
     @Override
     public void onItemRangeInserted(int positionStart, int itemCount) {
       updateEmptyStateViewVisibility();
-      setLoadingMore(false);
     }
 
     @Override
@@ -277,7 +276,6 @@ public class SimpleRecyclerView extends RecyclerView
 
   private void handleLoadMore() {
     if (onLoadMoreListener.shouldLoadMore()) {
-      setLoadingMore(true);
       onLoadMoreListener.onLoadMore();
     }
   }
@@ -580,15 +578,7 @@ public class SimpleRecyclerView extends RecyclerView
     loadMoreViewCell.setSpanSize(gridSpanCount);
   }
 
-  private void setLoadingMore(boolean isLoadingMore) {
-    if (isLoadingMore) {
-      showLoadMoreView();
-    } else {
-      hideLoadMoreView();
-    }
-  }
-
-  private void showLoadMoreView() {
+  public void showLoadMoreView() {
     if (loadMoreViewCell == null || isLoadMoreViewShown) {
       isLoadingMore = true;
       return;
@@ -604,7 +594,7 @@ public class SimpleRecyclerView extends RecyclerView
     isLoadingMore = true;
   }
 
-  private void hideLoadMoreView() {
+  public void hideLoadMoreView() {
     if (loadMoreViewCell == null || !isLoadMoreViewShown) {
       isLoadingMore = false;
       return;

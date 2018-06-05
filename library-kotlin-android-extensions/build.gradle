@@ -45,7 +45,7 @@ publish {
     userOrg = 'jaychang0917'
     groupId = 'com.jaychang'
     artifactId = 'simplerecyclerview-kotlin-android-extensions'
-    publishVersion = '2.0.3'
+    publishVersion = '2.0.4'
     desc = 'A RecyclerView extension for building list more easily.'
     website = 'https://github.com/jaychang0917/SimpleRecyclerView'
 }

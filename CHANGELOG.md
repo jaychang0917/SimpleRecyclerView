@@ -1,5 +1,9 @@
 ## Change Log
 
+### Version 2.0.4 (2018-06-05)
+- Should call `SimpleRecyclerView.showLoadMoreView()` / `SimpleRecyclerView.hideLoadMoreView()` to show / hide load more view.
+- Promote `SimpleRecyclerView.showLoadMoreView()` and `SimpleRecyclerView.hideLoadMoreView()`.
+
 ### Version 2.0.3 (2018-05-16)
 - Fix wrong section header measurement.
 

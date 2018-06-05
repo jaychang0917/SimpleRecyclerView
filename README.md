@@ -38,9 +38,9 @@ In your app level build.gradle :
 
 ```java
 dependencies {
-    compile 'com.jaychang:simplerecyclerview:{latest_version}'
+    implementation 'com.jaychang:simplerecyclerview:2.0.4'
     // for kotlin android extensions
-    compile 'com.jaychang:simplerecyclerview-kotlin-android-extensions:{latest_version}'
+    implementation 'com.jaychang:simplerecyclerview-kotlin-android-extensions:2.0.4'
 }
 ```
 [![Download](https://api.bintray.com/packages/jaychang0917/maven/simplerecyclerview/images/download.svg) ](https://bintray.com/jaychang0917/maven/simplerecyclerview/_latestVersion)

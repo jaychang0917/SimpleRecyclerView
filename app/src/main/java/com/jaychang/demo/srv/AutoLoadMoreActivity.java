@@ -87,9 +87,11 @@ public class AutoLoadMoreActivity extends BaseActivity {
   }
 
   private void loadBooks() {
+    recyclerView.showLoadMoreView();
     DataUtils.getBooksAsync(this, new DataUtils.DataCallback() {
       @Override
       public void onSuccess(List<Book> books) {
+        recyclerView.hideLoadMoreView();
         bindBooks(books);
         hasMoreData = false;
         ToastUtils.show(AutoLoadMoreActivity.this.getApplicationContext(), "Load more " + books.size() + " books.");

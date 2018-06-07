@@ -285,7 +285,7 @@ The empty state view will be shown automatically when there is no data. If you w
 ```
 
 ## <a name=section_header>Section Header</a>
-You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SimpleSectionHeaderProvider<T>`][3] is also provided. 
+You can group cells together by providing a [`SectionHeaderProvider<T>`][2] to `setSectionHeader(provider)`. A shorthand method [`SimpleSectionHeaderProvider<T>`][3] is also provided. **The section header is not interative (e.g. can't be clicked)**
 ```java
 SectionHeaderProvider<Book> sectionHeaderProvider = new SimpleSectionHeaderProvider<Book>() {
   // Your section header view here

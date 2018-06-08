@@ -115,7 +115,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   }
 
   private int getItemViewType(SimpleCell cell) {
-    return cell.getClass().getName().hashCode();
+    return cell.getItem().getClass().getName().hashCode();
   }
 
   @Override

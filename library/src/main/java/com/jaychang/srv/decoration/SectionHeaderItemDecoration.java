@@ -186,7 +186,7 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
       aClass = aClass.getSuperclass();
     }
 
-    return clazz.getCanonicalName().equals(aClass.getCanonicalName());
+    return clazz.getCanonicalName().equals(aClass.getCanonicalName()) || clazz.getCanonicalName().equals(aClass.getSuperclass().getCanonicalName());
   }
 
   private Object getItem(int position) {

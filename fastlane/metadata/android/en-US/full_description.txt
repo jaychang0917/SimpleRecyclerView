@@ -1,0 +1,12 @@
+Features:
+
+* Multiple Types
+* Cell Operations
+* Divider
+* Spacing
+* Empty State View
+* Section Header
+* Auto Load More
+* Drag & Drop
+* Swipe To Dismiss
+* Snappy

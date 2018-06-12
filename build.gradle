@@ -2,6 +2,7 @@
 
 buildscript {
     apply from: 'gradle/dependencies.gradle'
+    apply from: 'gradle/version.gradle'
 
     repositories {
         mavenCentral()

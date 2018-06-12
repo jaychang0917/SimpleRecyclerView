@@ -1,0 +1,125 @@
+/**
+ * README:
+ * 1: Add `apply from: 'gradle/version.gradle'` to project level buildscript
+ * 1: Create `version.version.properties` file in root project directory.
+ * 2: Use `ver.versionCode` and `ver.versionName` to retrieve them
+ * 3: Or run the following tasks if need:
+ *    - Run `./gradlew increaseVersionNameMajor` to increase version name major part
+ *    - Run `./gradlew increaseVersionNameMinor` to increase version name minor part
+ *    - Run `./gradlew increaseVersionNamePatch` to increase version name patch part
+ *    - Run `./gradlew increaseVersionCode` to increase version code
+ * */
+
+import groovy.transform.Field
+
+@Field final String MAJOR = 'major'
+@Field final String MINOR = 'minor'
+@Field final String PATCH = 'patch'
+@Field final String VERSION_CODE = 'versionCode'
+@Field final String FILE = 'version.properties'
+
+def version() {
+    def version = new Properties()
+    def stream
+    try {
+        stream = new FileInputStream(new File(project.rootDir, FILE))
+        version.load(stream)
+    } catch (FileNotFoundException ignore) {
+    } finally {
+        if (stream != null) stream.close()
+    }
+
+    if (!version[MAJOR]) version[MAJOR] = "1"
+    if (!version[MINOR]) version[MINOR] = "0"
+    if (!version[PATCH]) version[PATCH] = "0"
+    if (!version[VERSION_CODE]) version[VERSION_CODE] = "1"
+    return version
+}
+
+def versionCode() {
+    return version()[VERSION_CODE] as int
+}
+
+def versionName() {
+    def version = version()
+    return "${version[MAJOR]}.${version[MINOR]}.${version[PATCH]}"
+}
+
+def increaseVersionCode() {
+    def version = version()
+    def versionCode = version[VERSION_CODE] as int
+    versionCode++
+    version[VERSION_CODE] = versionCode.toString()
+
+    updateVersionFile(version)
+
+    println "Version code is $versionCode now."
+}
+
+def increaseVersionName(def type = MINOR) {
+    def version = version()
+    def major = version[MAJOR] as int
+    def minor = version[MINOR] as int
+    def patch = version[PATCH] as int
+
+    if (type == MAJOR) {
+        major++
+        minor = 0
+        patch = 0
+    } else if (type == MINOR) {
+        minor++
+        patch = 0
+    } else if (type == PATCH) {
+        patch++
+    }
+
+    version[MAJOR] = major.toString()
+    version[MINOR] = minor.toString()
+    version[PATCH] = patch.toString()
+
+    updateVersionFile(version)
+
+    println "Verson number is ${version[MAJOR]}.${version[MINOR]}.${version[PATCH]} now."
+}
+
+def updateVersionFile(version) {
+    def stream = new FileOutputStream(new File(project.rootDir, FILE))
+    try {
+        version.store(stream, null)
+    } finally {
+        stream.close()
+    }
+}
+
+ext.ver = [
+    "versionCode": versionCode(),
+    "versionName": versionName()
+]
+
+/**
+ * Tasks
+ * */
+
+task increaseVersionNameMajor {
+    doLast {
+        increaseVersionName(MAJOR)
+    }
+}
+
+task increaseVersionNameMinor {
+    doLast {
+        increaseVersionName(MINOR)
+    }
+}
+
+task increaseVersionNamePatch {
+    doLast {
+        increaseVersionName(PATCH)
+    }
+}
+
+task increaseVersionCode {
+    doLast {
+        increaseVersionCode()
+    }
+}

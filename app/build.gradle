@@ -7,8 +7,8 @@ android {
         applicationId "com.jaychang.demo.srv"
         minSdkVersion deps.build.minSdkVersion
         targetSdkVersion deps.build.targetSdkVersion
-        versionCode 4
-        versionName "1.1"
+        versionCode ver.versionCode
+        versionName ver.versionName
     }
     buildTypes {
         release {

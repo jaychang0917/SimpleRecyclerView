@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 2.0.5 (2018-09-03)
+- Fix [Issue#47](https://github.com/jaychang0917/SimpleRecyclerView/issues/47)
+
 ### Version 2.0.4 (2018-06-05)
 - Should call `SimpleRecyclerView.showLoadMoreView()` / `SimpleRecyclerView.hideLoadMoreView()` to show / hide load more view.
 - Promote `SimpleRecyclerView.showLoadMoreView()` and `SimpleRecyclerView.hideLoadMoreView()`.

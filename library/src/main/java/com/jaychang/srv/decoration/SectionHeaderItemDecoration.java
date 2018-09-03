@@ -71,12 +71,15 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
     for (int i = 0; i < parent.getChildCount(); i++) {
       View view = parent.getChildAt(i);
       int position = parent.getChildAdapterPosition(view);
-      if (position != NO_POSITION && !isSameSection(position)) {
+      int top = view.getTop() - sectionHeight;
+
+      if (position != NO_POSITION
+              && !isSameSection(position)
+              && !itemCoveredBySection(view.getHeight(), top)) {
         if (!isSectionType(position)) {
           continue;
         }
         View sectionHeader = getAndMeasureSectionHeader(parent, position);
-        int top = view.getTop() - sectionHeight;
         int bottom = view.getTop();
         boolean isHeaderExit = top <= topPadding;
 
@@ -103,6 +106,10 @@ public class SectionHeaderItemDecoration extends RecyclerView.ItemDecoration {
         canvas.restore();
       }
     }
+  }
+
+  private boolean itemCoveredBySection(int itemHeight, int sectionTop) {
+    return itemHeight + sectionTop <= 0;
   }
 
   // draw sticky section header
